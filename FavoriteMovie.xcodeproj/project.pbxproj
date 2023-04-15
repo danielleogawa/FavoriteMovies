@@ -16,6 +16,8 @@
 		EEDC2A0229EB0CCD0091D963 /* FavoriteMovieUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDC2A0129EB0CCD0091D963 /* FavoriteMovieUITests.swift */; };
 		EEDC2A0429EB0CCD0091D963 /* FavoriteMovieUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDC2A0329EB0CCD0091D963 /* FavoriteMovieUITestsLaunchTests.swift */; };
 		EEDC2A1129EB10640091D963 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDC2A1029EB10640091D963 /* LoginViewController.swift */; };
+		EEDC2A1429EB138C0091D963 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDC2A1329EB138C0091D963 /* LoginScreen.swift */; };
+		EEDC2A1629EB220E0091D963 /* LoginViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDC2A1529EB220E0091D963 /* LoginViewViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		EEDC2A0129EB0CCD0091D963 /* FavoriteMovieUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteMovieUITests.swift; sourceTree = "<group>"; };
 		EEDC2A0329EB0CCD0091D963 /* FavoriteMovieUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteMovieUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		EEDC2A1029EB10640091D963 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		EEDC2A1329EB138C0091D963 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
+		EEDC2A1529EB220E0091D963 /* LoginViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,7 +109,7 @@
 				EEDC29E929EB0CCC0091D963 /* Assets.xcassets */,
 				EEDC29EB29EB0CCC0091D963 /* LaunchScreen.storyboard */,
 				EEDC29EE29EB0CCC0091D963 /* Info.plist */,
-				EEDC2A1029EB10640091D963 /* LoginViewController.swift */,
+				EEDC2A1229EB136E0091D963 /* LoginView */,
 			);
 			path = FavoriteMovie;
 			sourceTree = "<group>";
@@ -125,6 +129,16 @@
 				EEDC2A0329EB0CCD0091D963 /* FavoriteMovieUITestsLaunchTests.swift */,
 			);
 			path = FavoriteMovieUITests;
+			sourceTree = "<group>";
+		};
+		EEDC2A1229EB136E0091D963 /* LoginView */ = {
+			isa = PBXGroup;
+			children = (
+				EEDC2A1029EB10640091D963 /* LoginViewController.swift */,
+				EEDC2A1529EB220E0091D963 /* LoginViewViewModel.swift */,
+				EEDC2A1329EB138C0091D963 /* LoginScreen.swift */,
+			);
+			path = LoginView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,9 +272,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				EEDC2A1129EB10640091D963 /* LoginViewController.swift in Sources */,
+				EEDC2A1629EB220E0091D963 /* LoginViewViewModel.swift in Sources */,
 				EEDC29E529EB0CCB0091D963 /* ViewController.swift in Sources */,
 				EEDC29E129EB0CCB0091D963 /* AppDelegate.swift in Sources */,
 				EEDC29E329EB0CCB0091D963 /* SceneDelegate.swift in Sources */,
+				EEDC2A1429EB138C0091D963 /* LoginScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
