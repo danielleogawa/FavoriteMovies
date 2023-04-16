@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		EEDC29E129EB0CCB0091D963 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDC29E029EB0CCB0091D963 /* AppDelegate.swift */; };
 		EEDC29E329EB0CCB0091D963 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDC29E229EB0CCB0091D963 /* SceneDelegate.swift */; };
-		EEDC29E529EB0CCB0091D963 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDC29E429EB0CCB0091D963 /* ViewController.swift */; };
+		EEDC29E529EB0CCB0091D963 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDC29E429EB0CCB0091D963 /* HomeViewController.swift */; };
 		EEDC29EA29EB0CCC0091D963 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EEDC29E929EB0CCC0091D963 /* Assets.xcassets */; };
 		EEDC29ED29EB0CCC0091D963 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EEDC29EB29EB0CCC0091D963 /* LaunchScreen.storyboard */; };
 		EEDC29F829EB0CCD0091D963 /* FavoriteMovieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDC29F729EB0CCD0091D963 /* FavoriteMovieTests.swift */; };
@@ -19,6 +19,7 @@
 		EEDC2A1429EB138C0091D963 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDC2A1329EB138C0091D963 /* LoginScreen.swift */; };
 		EEDC2A1629EB220E0091D963 /* LoginViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDC2A1529EB220E0091D963 /* LoginViewViewModel.swift */; };
 		EEDC2A1929EC3D0D0091D963 /* extension + CAGradientLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDC2A1829EC3D0D0091D963 /* extension + CAGradientLayer.swift */; };
+		EEDC2A1D29EC47A50091D963 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDC2A1C29EC47A50091D963 /* Colors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,7 +43,7 @@
 		EEDC29DD29EB0CCB0091D963 /* FavoriteMovie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FavoriteMovie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEDC29E029EB0CCB0091D963 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EEDC29E229EB0CCB0091D963 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		EEDC29E429EB0CCB0091D963 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		EEDC29E429EB0CCB0091D963 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		EEDC29E929EB0CCC0091D963 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EEDC29EC29EB0CCC0091D963 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EEDC29EE29EB0CCC0091D963 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -55,6 +56,7 @@
 		EEDC2A1329EB138C0091D963 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		EEDC2A1529EB220E0091D963 /* LoginViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewViewModel.swift; sourceTree = "<group>"; };
 		EEDC2A1829EC3D0D0091D963 /* extension + CAGradientLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "extension + CAGradientLayer.swift"; sourceTree = "<group>"; };
+		EEDC2A1C29EC47A50091D963 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Colors.swift; path = ../../../../../../Downloads/Colors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,14 +107,10 @@
 		EEDC29DF29EB0CCB0091D963 /* FavoriteMovie */ = {
 			isa = PBXGroup;
 			children = (
-				EEDC2A1729EC3CEE0091D963 /* Utilities */,
-				EEDC29E029EB0CCB0091D963 /* AppDelegate.swift */,
-				EEDC29E229EB0CCB0091D963 /* SceneDelegate.swift */,
-				EEDC29E429EB0CCB0091D963 /* ViewController.swift */,
-				EEDC29E929EB0CCC0091D963 /* Assets.xcassets */,
-				EEDC29EB29EB0CCC0091D963 /* LaunchScreen.storyboard */,
-				EEDC29EE29EB0CCC0091D963 /* Info.plist */,
 				EEDC2A1229EB136E0091D963 /* LoginView */,
+				EEDC2A1A29EC46130091D963 /* HomeView */,
+				EEDC2A1729EC3CEE0091D963 /* Utilities */,
+				EEDC29EE29EB0CCC0091D963 /* Info.plist */,
 			);
 			path = FavoriteMovie;
 			sourceTree = "<group>";
@@ -147,9 +145,22 @@
 		EEDC2A1729EC3CEE0091D963 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				EEDC29E029EB0CCB0091D963 /* AppDelegate.swift */,
+				EEDC29E229EB0CCB0091D963 /* SceneDelegate.swift */,
 				EEDC2A1829EC3D0D0091D963 /* extension + CAGradientLayer.swift */,
+				EEDC29E929EB0CCC0091D963 /* Assets.xcassets */,
+				EEDC29EB29EB0CCC0091D963 /* LaunchScreen.storyboard */,
+				EEDC2A1C29EC47A50091D963 /* Colors.swift */,
 			);
 			name = Utilities;
+			sourceTree = "<group>";
+		};
+		EEDC2A1A29EC46130091D963 /* HomeView */ = {
+			isa = PBXGroup;
+			children = (
+				EEDC29E429EB0CCB0091D963 /* HomeViewController.swift */,
+			);
+			path = HomeView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -283,9 +294,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				EEDC2A1129EB10640091D963 /* LoginViewController.swift in Sources */,
+				EEDC2A1D29EC47A50091D963 /* Colors.swift in Sources */,
 				EEDC2A1929EC3D0D0091D963 /* extension + CAGradientLayer.swift in Sources */,
 				EEDC2A1629EB220E0091D963 /* LoginViewViewModel.swift in Sources */,
-				EEDC29E529EB0CCB0091D963 /* ViewController.swift in Sources */,
+				EEDC29E529EB0CCB0091D963 /* HomeViewController.swift in Sources */,
 				EEDC29E129EB0CCB0091D963 /* AppDelegate.swift in Sources */,
 				EEDC29E329EB0CCB0091D963 /* SceneDelegate.swift in Sources */,
 				EEDC2A1429EB138C0091D963 /* LoginScreen.swift in Sources */,

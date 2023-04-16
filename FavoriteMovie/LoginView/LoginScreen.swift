@@ -25,9 +25,11 @@ class LoginScreen: UIView {
     private lazy var loginButton: UIButton = {
         let element = UIButton()
         element.translatesAutoresizingMaskIntoConstraints = false
+        element.layer.borderWidth = 2
+        element.layer.borderColor = Colors.darkMagenta
         element.clipsToBounds = true
         element.layer.cornerRadius = 30
-        element.backgroundColor = .red
+        element.backgroundColor = .black
         element.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         element.addTarget(self, action: #selector(self.loginButtonTapped), for: .touchUpInside)
         element.setTitle("FaceID", for: .normal)
@@ -38,9 +40,9 @@ class LoginScreen: UIView {
         let element = CAGradientLayer()
         element.type = .axial
         element.colors = [
-            UIColor(red: 67/255, green: 14/255, blue: 14/255, alpha: 1).cgColor,
-            UIColor(red: 14/255, green: 14/255, blue: 14/255, alpha: 1).cgColor,
-            UIColor(red: 67/255, green: 14/255, blue: 14/255, alpha: 1).cgColor,
+            Colors.darkMagenta,
+            Colors.darkGray,
+            Colors.darkMagenta
         ]
         element.locations = [0, 0.5, 1]
         return element
@@ -55,9 +57,9 @@ class LoginScreen: UIView {
     func setBackground(){
         self.gradientBackground.frame = bounds
         layer.insertSublayer(gradientBackground, at: 0)
-        gradientBackground.setColors(newColors: [UIColor(red: 14/255, green: 14/255, blue: 14/255, alpha: 1).cgColor,
-                                                 UIColor(red: 67/255, green: 14/255, blue: 14/255, alpha: 1).cgColor,
-                                                 UIColor(red: 14/255, green: 14/255, blue: 14/255, alpha: 1).cgColor,],
+        gradientBackground.setColors(newColors: [Colors.darkGray,
+                                                 Colors.darkMagenta,
+                                                 Colors.darkGray],
                                      animated: true,
                                      duration: 4,
                                      name: .easeInEaseOut)
