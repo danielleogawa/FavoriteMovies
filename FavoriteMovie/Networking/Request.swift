@@ -17,9 +17,6 @@ struct Request {
     static let apiKey = ""
     static let language = "&language=en-US"
     static let baseURL = "https://api.themoviedb.org/3/discover/movie?api_key="
-    //https://api.themoviedb.org/3/discover/movie?api_key=a929d511c730708e667fd7fe46098969 &language=en-US &sort_by=popularity.desc
-    
-//https://api.themoviedb.org/3/discover/movie?a929d511c730708e667fd7fe46098969&language=en-US&sort_by=popularity.desc
 
     enum UrlPath: String {
         case mostPopularMovies = "&sort_by=popularity.desc"
