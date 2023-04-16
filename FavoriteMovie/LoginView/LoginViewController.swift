@@ -20,7 +20,7 @@ final class LoginViewController: UIViewController {
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nil, bundle: nil)
         self.screen = LoginScreen()
-        self.viewModel = LoginViewViewModel()
+        self.viewModel = LoginViewViewModel(delegate: self)
     }
     
     required init?(coder: NSCoder) {
@@ -43,4 +43,14 @@ extension LoginViewController: LoginScreenDelegate {
     func loginButtonTapped() {
         viewModel?.loginIn()
     }
+}
+
+extension LoginViewController: LoginViewViewModelDelegate {
+    func popTohomeViewController() {
+        DispatchQueue.main.async {
+            self.navigationController?.pushViewController(HomeViewController(), animated: true)
+        }
+    }
+    
+    
 }

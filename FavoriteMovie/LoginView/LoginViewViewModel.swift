@@ -8,10 +8,17 @@
 import Foundation
 import LocalAuthentication
 
+protocol LoginViewViewModelDelegate {
+    func popTohomeViewController()
+}
+
+
 final class LoginViewViewModel {
+    var delegate: LoginViewViewModelDelegate?
     private var context = LAContext()
     
-    init() {
+    init(delegate: LoginViewViewModelDelegate) {
+        self.delegate = delegate
         context.canEvaluatePolicy(.deviceOwnerAuthentication, error: nil)
         state = .loggedout
     }
@@ -40,11 +47,12 @@ final class LoginViewViewModel {
                 do {
                     try await context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: "Log in to your account")
                     state = .loggedin
+                    delegate?.popTohomeViewController()
+                    print("user logged in")
                 } catch let error {
                     print(error.localizedDescription)
                 }
             }
-            print("user logged in")
             
         }
     }
