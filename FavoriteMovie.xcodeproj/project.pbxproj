@@ -18,6 +18,7 @@
 		EEDC2A1129EB10640091D963 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDC2A1029EB10640091D963 /* LoginViewController.swift */; };
 		EEDC2A1429EB138C0091D963 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDC2A1329EB138C0091D963 /* LoginScreen.swift */; };
 		EEDC2A1629EB220E0091D963 /* LoginViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDC2A1529EB220E0091D963 /* LoginViewViewModel.swift */; };
+		EEDC2A1929EC3D0D0091D963 /* extension + CAGradientLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDC2A1829EC3D0D0091D963 /* extension + CAGradientLayer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		EEDC2A1029EB10640091D963 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		EEDC2A1329EB138C0091D963 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		EEDC2A1529EB220E0091D963 /* LoginViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewViewModel.swift; sourceTree = "<group>"; };
+		EEDC2A1829EC3D0D0091D963 /* extension + CAGradientLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "extension + CAGradientLayer.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 		EEDC29DF29EB0CCB0091D963 /* FavoriteMovie */ = {
 			isa = PBXGroup;
 			children = (
+				EEDC2A1729EC3CEE0091D963 /* Utilities */,
 				EEDC29E029EB0CCB0091D963 /* AppDelegate.swift */,
 				EEDC29E229EB0CCB0091D963 /* SceneDelegate.swift */,
 				EEDC29E429EB0CCB0091D963 /* ViewController.swift */,
@@ -139,6 +142,14 @@
 				EEDC2A1329EB138C0091D963 /* LoginScreen.swift */,
 			);
 			path = LoginView;
+			sourceTree = "<group>";
+		};
+		EEDC2A1729EC3CEE0091D963 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				EEDC2A1829EC3D0D0091D963 /* extension + CAGradientLayer.swift */,
+			);
+			name = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -272,6 +283,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EEDC2A1129EB10640091D963 /* LoginViewController.swift in Sources */,
+				EEDC2A1929EC3D0D0091D963 /* extension + CAGradientLayer.swift in Sources */,
 				EEDC2A1629EB220E0091D963 /* LoginViewViewModel.swift in Sources */,
 				EEDC29E529EB0CCB0091D963 /* ViewController.swift in Sources */,
 				EEDC29E129EB0CCB0091D963 /* AppDelegate.swift in Sources */,

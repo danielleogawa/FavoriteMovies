@@ -27,10 +27,16 @@ final class LoginViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        screen?.setBackground()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         screen?.setViewDelegate(delegate: self)
     }
+    
 }
 
 extension LoginViewController: LoginScreenDelegate {

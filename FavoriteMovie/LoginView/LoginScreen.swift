@@ -21,6 +21,7 @@ class LoginScreen: UIView {
     }
     
     //MARK: - Elements
+
     private lazy var loginButton: UIButton = {
         let element = UIButton()
         element.translatesAutoresizingMaskIntoConstraints = false
@@ -33,15 +34,39 @@ class LoginScreen: UIView {
         return element
     }()
     
+    lazy var gradientBackground: CAGradientLayer = {
+        let element = CAGradientLayer()
+        element.type = .axial
+        element.colors = [
+            UIColor(red: 67/255, green: 14/255, blue: 14/255, alpha: 1).cgColor,
+            UIColor(red: 14/255, green: 14/255, blue: 14/255, alpha: 1).cgColor,
+            UIColor(red: 67/255, green: 14/255, blue: 14/255, alpha: 1).cgColor,
+        ]
+        element.locations = [0, 0.5, 1]
+        return element
+    }()
+    
     //MARK: - Elements targets
     
-    @objc func loginButtonTapped(){
+    @objc private func loginButtonTapped(){
         delegate?.loginButtonTapped()
     }
     
+    func setBackground(){
+        self.gradientBackground.frame = bounds
+        layer.insertSublayer(gradientBackground, at: 0)
+        gradientBackground.setColors(newColors: [UIColor(red: 14/255, green: 14/255, blue: 14/255, alpha: 1).cgColor,
+                                                 UIColor(red: 67/255, green: 14/255, blue: 14/255, alpha: 1).cgColor,
+                                                 UIColor(red: 14/255, green: 14/255, blue: 14/255, alpha: 1).cgColor,],
+                                     animated: true,
+                                     duration: 4,
+                                     name: .easeInEaseOut)
+    }
+    
+    // MARK: - init
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = .orange
         setButton()
     }
     
@@ -50,7 +75,7 @@ class LoginScreen: UIView {
     }
     
     //MARK: - Elements settings
-    
+
     private func setButton() {
         addSubview(loginButton)
         NSLayoutConstraint.activate([
