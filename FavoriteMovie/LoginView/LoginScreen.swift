@@ -26,7 +26,7 @@ class LoginScreen: UIView {
         let element = UIButton()
         element.translatesAutoresizingMaskIntoConstraints = false
         element.layer.borderWidth = 2
-        element.layer.borderColor = Colors.darkMagenta
+        element.layer.borderColor = Colors.darkMagenta.cgColor
         element.clipsToBounds = true
         element.layer.cornerRadius = 30
         element.backgroundColor = .black
@@ -40,9 +40,9 @@ class LoginScreen: UIView {
         let element = CAGradientLayer()
         element.type = .axial
         element.colors = [
-            Colors.darkMagenta,
-            Colors.darkGray,
-            Colors.darkMagenta
+            Colors.darkMagenta.cgColor,
+            Colors.darkGray.cgColor,
+            Colors.darkMagenta.cgColor
         ]
         element.locations = [0, 0.5, 1]
         return element
@@ -57,9 +57,9 @@ class LoginScreen: UIView {
     func setBackground(){
         self.gradientBackground.frame = bounds
         layer.insertSublayer(gradientBackground, at: 0)
-        gradientBackground.setColors(newColors: [Colors.darkGray,
-                                                 Colors.darkMagenta,
-                                                 Colors.darkGray],
+        gradientBackground.setColors(newColors: [Colors.darkGray.cgColor,
+                                                 Colors.darkMagenta.cgColor,
+                                                 Colors.darkGray.cgColor],
                                      animated: true,
                                      duration: 4,
                                      name: .easeInEaseOut)

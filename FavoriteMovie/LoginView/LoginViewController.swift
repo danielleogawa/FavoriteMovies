@@ -48,7 +48,7 @@ extension LoginViewController: LoginScreenDelegate {
 extension LoginViewController: LoginViewViewModelDelegate {
     func popTohomeViewController() {
         DispatchQueue.main.async {
-            self.navigationController?.pushViewController(HomeViewController(), animated: true)
+            self.navigationController?.pushViewController(TabBarViewController(), animated: true)
         }
     }
     

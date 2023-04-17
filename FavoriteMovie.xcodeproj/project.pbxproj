@@ -24,6 +24,8 @@
 		EEDC2A2229EC81980091D963 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDC2A2129EC81980091D963 /* Auth.swift */; };
 		EEDC2A2529ECAE1A0091D963 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDC2A2429ECAE1A0091D963 /* Movie.swift */; };
 		EEDC2A2729ECAFE80091D963 /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDC2A2629ECAFE80091D963 /* List.swift */; };
+		EEDC2A2929ECB8670091D963 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDC2A2829ECB8670091D963 /* HomeScreen.swift */; };
+		EEDC2A2C29ECBB520091D963 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDC2A2B29ECBB520091D963 /* TabBarViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +67,8 @@
 		EEDC2A2129EC81980091D963 /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
 		EEDC2A2429ECAE1A0091D963 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		EEDC2A2629ECAFE80091D963 /* List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
+		EEDC2A2829ECB8670091D963 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
+		EEDC2A2B29ECBB520091D963 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +119,7 @@
 		EEDC29DF29EB0CCB0091D963 /* FavoriteMovie */ = {
 			isa = PBXGroup;
 			children = (
+				EEDC2A2A29ECBB250091D963 /* TabBar */,
 				EEDC2A2329ECAE100091D963 /* Models */,
 				EEDC2A1E29EC7B2B0091D963 /* Networking */,
 				EEDC2A1229EB136E0091D963 /* LoginView */,
@@ -169,6 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				EEDC29E429EB0CCB0091D963 /* HomeViewController.swift */,
+				EEDC2A2829ECB8670091D963 /* HomeScreen.swift */,
 			);
 			path = HomeView;
 			sourceTree = "<group>";
@@ -189,6 +195,14 @@
 				EEDC2A2629ECAFE80091D963 /* List.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		EEDC2A2A29ECBB250091D963 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				EEDC2A2B29ECBB520091D963 /* TabBarViewController.swift */,
+			);
+			path = TabBar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -325,8 +339,10 @@
 				EEDC2A1D29EC47A50091D963 /* Colors.swift in Sources */,
 				EEDC2A1929EC3D0D0091D963 /* extension + CAGradientLayer.swift in Sources */,
 				EEDC2A1629EB220E0091D963 /* LoginViewViewModel.swift in Sources */,
+				EEDC2A2C29ECBB520091D963 /* TabBarViewController.swift in Sources */,
 				EEDC29E529EB0CCB0091D963 /* HomeViewController.swift in Sources */,
 				EEDC2A2729ECAFE80091D963 /* List.swift in Sources */,
+				EEDC2A2929ECB8670091D963 /* HomeScreen.swift in Sources */,
 				EEDC2A2229EC81980091D963 /* Auth.swift in Sources */,
 				EEDC29E129EB0CCB0091D963 /* AppDelegate.swift in Sources */,
 				EEDC29E329EB0CCB0091D963 /* SceneDelegate.swift in Sources */,

@@ -13,6 +13,9 @@ enum CustomError: Error {
 }
 
 struct Request {
+    //TODO: get the user device laguage
+    //TODO: get the current data
+    //TODO: Get the poster image
     
     static let apiKey = ""
     static let language = "&language=en-US"
