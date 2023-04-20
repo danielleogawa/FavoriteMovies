@@ -15,8 +15,8 @@ final class HomeScreen: UIView {
         let element = CAGradientLayer()
         element.type = .axial
         element.colors = [
-            Colors.darkGray.cgColor,
-            Colors.darkMagenta.cgColor
+            Colors.darkMagenta.cgColor,
+            Colors.darkGray.cgColor
         ]
         element.locations = [0, 1]
         return element
@@ -39,7 +39,7 @@ final class HomeScreen: UIView {
         let element = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout.init())
         element.translatesAutoresizingMaskIntoConstraints = false
         element.showsHorizontalScrollIndicator = false
-        element.backgroundColor = .red
+        element.backgroundColor = .clear
         element.delaysContentTouches = false
         element.isPagingEnabled = true
         element.contentInsetAdjustmentBehavior = .never
