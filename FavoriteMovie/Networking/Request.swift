@@ -21,7 +21,7 @@ struct Request {
     static let language = "&language=en-US"
     static let baseURL = "https://api.themoviedb.org/3/discover/movie?api_key="
 
-    enum UrlPath: String {
+    enum DiscoverUrlPath: String {
         case mostPopularMovies = "&sort_by=popularity.desc"
         case onTheatres = "&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&primary_release_date.gte=2023-01-01&primary_release_date.lte=2023-04-16&with_watch_monetization_types=flatrate"
         case highRatedMovies = "&certification_country=US&certification=R&sort_by=vote_average.desc"

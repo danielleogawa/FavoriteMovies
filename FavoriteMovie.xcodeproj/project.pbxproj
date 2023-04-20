@@ -28,6 +28,9 @@
 		EEDC2A2C29ECBB520091D963 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDC2A2B29ECBB520091D963 /* TabBarViewController.swift */; };
 		EEDC2A2E29ECD0100091D963 /* HomeMovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDC2A2D29ECD0100091D963 /* HomeMovieCollectionViewCell.swift */; };
 		EEDC2A3029ED7C220091D963 /* HomeViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDC2A2F29ED7C220091D963 /* HomeViewViewModel.swift */; };
+		EEDC2A3229F1E4790091D963 /* GenreMoviesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDC2A3129F1E4790091D963 /* GenreMoviesCell.swift */; };
+		EEDC2A3429F1E6A30091D963 /* OnTheatresTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDC2A3329F1E6A30091D963 /* OnTheatresTableViewCell.swift */; };
+		EEDC2A3629F1FA0E0091D963 /* Extension + TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDC2A3529F1FA0E0091D963 /* Extension + TableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +76,9 @@
 		EEDC2A2B29ECBB520091D963 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		EEDC2A2D29ECD0100091D963 /* HomeMovieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMovieCollectionViewCell.swift; sourceTree = "<group>"; };
 		EEDC2A2F29ED7C220091D963 /* HomeViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewViewModel.swift; sourceTree = "<group>"; };
+		EEDC2A3129F1E4790091D963 /* GenreMoviesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreMoviesCell.swift; sourceTree = "<group>"; };
+		EEDC2A3329F1E6A30091D963 /* OnTheatresTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnTheatresTableViewCell.swift; sourceTree = "<group>"; };
+		EEDC2A3529F1FA0E0091D963 /* Extension + TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + TableViewCell.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +176,7 @@
 				EEDC29E929EB0CCC0091D963 /* Assets.xcassets */,
 				EEDC29EB29EB0CCC0091D963 /* LaunchScreen.storyboard */,
 				EEDC2A1C29EC47A50091D963 /* Colors.swift */,
+				EEDC2A3529F1FA0E0091D963 /* Extension + TableViewCell.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -179,6 +186,8 @@
 			children = (
 				EEDC29E429EB0CCB0091D963 /* HomeViewController.swift */,
 				EEDC2A2829ECB8670091D963 /* HomeScreen.swift */,
+				EEDC2A3329F1E6A30091D963 /* OnTheatresTableViewCell.swift */,
+				EEDC2A3129F1E4790091D963 /* GenreMoviesCell.swift */,
 				EEDC2A2D29ECD0100091D963 /* HomeMovieCollectionViewCell.swift */,
 				EEDC2A2F29ED7C220091D963 /* HomeViewViewModel.swift */,
 			);
@@ -346,15 +355,18 @@
 				EEDC2A3029ED7C220091D963 /* HomeViewViewModel.swift in Sources */,
 				EEDC2A1929EC3D0D0091D963 /* extension + CAGradientLayer.swift in Sources */,
 				EEDC2A1629EB220E0091D963 /* LoginViewViewModel.swift in Sources */,
+				EEDC2A3229F1E4790091D963 /* GenreMoviesCell.swift in Sources */,
 				EEDC2A2C29ECBB520091D963 /* TabBarViewController.swift in Sources */,
 				EEDC29E529EB0CCB0091D963 /* HomeViewController.swift in Sources */,
 				EEDC2A2729ECAFE80091D963 /* List.swift in Sources */,
 				EEDC2A2929ECB8670091D963 /* HomeScreen.swift in Sources */,
 				EEDC2A2229EC81980091D963 /* Auth.swift in Sources */,
 				EEDC29E129EB0CCB0091D963 /* AppDelegate.swift in Sources */,
+				EEDC2A3429F1E6A30091D963 /* OnTheatresTableViewCell.swift in Sources */,
 				EEDC2A2E29ECD0100091D963 /* HomeMovieCollectionViewCell.swift in Sources */,
 				EEDC29E329EB0CCB0091D963 /* SceneDelegate.swift in Sources */,
 				EEDC2A2029EC7B490091D963 /* Request.swift in Sources */,
+				EEDC2A3629F1FA0E0091D963 /* Extension + TableViewCell.swift in Sources */,
 				EEDC2A2529ECAE1A0091D963 /* Movie.swift in Sources */,
 				EEDC2A1429EB138C0091D963 /* LoginScreen.swift in Sources */,
 			);
