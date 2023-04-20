@@ -34,8 +34,17 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setNavigationBar()
     }
 
+    func setNavigationBar() {
+        let apparence = UINavigationBarAppearance()
+        apparence.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
+        apparence.backgroundEffect = UIBlurEffect(style: .systemUltraThinMaterialDark)
+        apparence.backgroundColor = Colors.darkMagenta.withAlphaComponent(0.2)
+        navigationController?.navigationBar.standardAppearance = apparence
+        navigationController?.navigationBar.isTranslucent = true
+    }
 }
 
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {

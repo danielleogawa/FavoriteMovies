@@ -49,6 +49,7 @@ extension LoginViewController: LoginViewViewModelDelegate {
     func popTohomeViewController() {
         DispatchQueue.main.async {
             self.navigationController?.pushViewController(TabBarViewController(), animated: true)
+            self.navigationController?.isNavigationBarHidden = true
         }
     }
     
