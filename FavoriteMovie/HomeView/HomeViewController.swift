@@ -9,6 +9,7 @@ import UIKit
 
 class HomeViewController: UIViewController {
 
+    var viewModel: HomeViewViewModel?
     var screen: HomeScreen?
     
     override func loadView() {
@@ -19,6 +20,8 @@ class HomeViewController: UIViewController {
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nil, bundle: nil)
         self.screen = HomeScreen()
+        self.screen?.setDelegate(delegate: self)
+        self.viewModel = HomeViewViewModel(delegate: self)
     }
     
     required init?(coder: NSCoder) {
@@ -31,12 +34,39 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setNavigationBar()
     }
-    
-    private func setNavigationBar() {
-        self.navigationController?.isNavigationBarHidden = true
-        self.navigationItem.hidesBackButton = true
-    }
+
 }
 
+extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return viewModel?.mainMovies.count ?? 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeMovieCollectionViewCell.identifier, for: indexPath) as? HomeMovieCollectionViewCell {
+            
+            //TODO: refatorar
+            
+            let movie = viewModel?.mainMovies[indexPath.row]
+            viewModel?.getImage(movie: movie, completion: { downloadedImage in
+                cell.setCell(with: downloadedImage, movie: movie)
+            })
+            return cell
+        }
+        return UICollectionViewCell()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: self.view.bounds.width, height: 600)
+    }
+
+}
+
+extension HomeViewController: HomeViewViewModelDelegate {
+    func updateCollectionView() {
+        DispatchQueue.main.async {
+            self.screen?.mainCollectionView.reloadData()
+        }
+    }
+}

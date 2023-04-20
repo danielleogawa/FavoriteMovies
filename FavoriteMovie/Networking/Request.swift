@@ -5,7 +5,7 @@
 //  Created by Danielle Nozaki Ogawa on 2023/04/16.
 //
 
-import Foundation
+import UIKit
 
 enum CustomError: Error {
     case invalidURL
@@ -34,6 +34,29 @@ struct Request {
         return URL(string: urlString)
     }
     
+    static func getImageURL(posterPath: String) -> URL? {
+        let imageURLBase = "https://image.tmdb.org/t/p/w500"
+        let urlString = imageURLBase + posterPath
+        return URL(string: urlString)
+    }
+    
+    static func downloadImage(from url: URL, completion: @escaping (UIImage?, Error?) -> Void) {
+
+        let requestURL = URLRequest(url: url)
+        
+        let task = URLSession.shared.dataTask(with: requestURL) { data, _, _ in
+            DispatchQueue.main.async {
+                guard let data else {
+                    completion(nil, CustomError.invalidData)
+                    return
+                }
+                completion(UIImage(data: data), nil)
+            }
+        }
+        task.resume()
+       
+    }
+    
     static func request<T: Codable>(url: URL?,
                                     expecting: T.Type,
                                     completion: @escaping (Result<T, Error>) -> Void) {
@@ -56,8 +79,8 @@ struct Request {
             
             do {
                 let decoder = JSONDecoder()
-                let result = try decoder.decode(expecting, from: data)
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
+                let result = try decoder.decode(expecting, from: data)
                 completion(.success(result))
             } catch {
                 completion(.failure(error))
