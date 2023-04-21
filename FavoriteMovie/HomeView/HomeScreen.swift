@@ -35,7 +35,7 @@ final class HomeScreen: UIView {
         return element
     }()
     
-    lazy var mainCollectionView: UICollectionView = {
+    lazy var onTheatresCollectionView: UICollectionView = {
         let element = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout.init())
         element.translatesAutoresizingMaskIntoConstraints = false
         element.showsHorizontalScrollIndicator = false
@@ -47,14 +47,31 @@ final class HomeScreen: UIView {
         layout.minimumLineSpacing = 0
         layout.scrollDirection = .horizontal
         element.setCollectionViewLayout(layout, animated: true)
-        element.register(HomeMovieCollectionViewCell.self, forCellWithReuseIdentifier: HomeMovieCollectionViewCell.identifier)
+        element.tag = 1
+        return element
+    }()
+    
+    lazy var genresCollectionView: UICollectionView = {
+        let element = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout.init())
+        element.translatesAutoresizingMaskIntoConstraints = false
+        element.showsHorizontalScrollIndicator = false
+        element.backgroundColor = .clear
+        element.delaysContentTouches = false
+
+        element.contentInsetAdjustmentBehavior = .never
+        let layout = UICollectionViewFlowLayout()
+        layout.minimumLineSpacing = 8
+        layout.scrollDirection = .horizontal
+        element.setCollectionViewLayout(layout, animated: true)
+        element.tag = 2
         return element
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setCollectionView()
         setScrollView()
+        setOnTheatresCollectionViewCollectionView()
+        setGenresCollectionViewCollectionView()
         
     }
     
@@ -68,8 +85,15 @@ final class HomeScreen: UIView {
     }
     
     func setDelegate(delegate: Delegate) {
-        self.mainCollectionView.delegate = delegate
-        self.mainCollectionView.dataSource = delegate
+        self.onTheatresCollectionView.delegate = delegate
+        self.onTheatresCollectionView.dataSource = delegate
+        self.onTheatresCollectionView.register(HomeMovieCollectionViewCell.self, forCellWithReuseIdentifier: HomeMovieCollectionViewCell.identifier)
+    }
+    
+    func setDelegateGener(delegate: Delegate) {
+        self.genresCollectionView.delegate = delegate
+        self.genresCollectionView.dataSource = delegate
+        self.genresCollectionView.register(GenresCollectionViewCell.self, forCellWithReuseIdentifier: GenresCollectionViewCell.identifier)
     }
     
     func setScrollView() {
@@ -91,15 +115,24 @@ final class HomeScreen: UIView {
     
     
     
-    func setCollectionView() {
-        contentView.addSubview(mainCollectionView)
+    func setOnTheatresCollectionViewCollectionView() {
+        contentView.addSubview(onTheatresCollectionView)
         NSLayoutConstraint.activate([
-            mainCollectionView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            mainCollectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            mainCollectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            mainCollectionView.heightAnchor.constraint(equalToConstant: 600)
+            onTheatresCollectionView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            onTheatresCollectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            onTheatresCollectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            onTheatresCollectionView.heightAnchor.constraint(equalToConstant: 600)
         ])
     }
     
+    func setGenresCollectionViewCollectionView() {
+        contentView.addSubview(genresCollectionView)
+        NSLayoutConstraint.activate([
+            genresCollectionView.topAnchor.constraint(equalTo: onTheatresCollectionView.bottomAnchor),
+            genresCollectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            genresCollectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            genresCollectionView.heightAnchor.constraint(equalToConstant: 100)
+        ])
+    }
 }
 

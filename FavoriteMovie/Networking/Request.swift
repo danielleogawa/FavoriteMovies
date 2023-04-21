@@ -14,13 +14,17 @@ enum CustomError: Error {
 
 struct Request {
     //TODO: get the user device laguage
-    //TODO: get the current data
-    //TODO: Get the poster image
+    //TODO: get the current date
     
-    static let apiKey = ""
+    static let apiKey = "?api_key=a929d511c730708e667fd7fe46098969"
     static let language = "&language=en-US"
-    static let baseURL = "https://api.themoviedb.org/3/discover/movie?api_key="
-
+    static let baseURL = "https://api.themoviedb.org/3"
+    
+    enum Path: String {
+        case discover = "/discover/movie"
+        case genre = "/genre/movie/list"
+    }
+    
     enum UrlPath: String {
         case mostPopularMovies = "&sort_by=popularity.desc"
         case onTheatres = "&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&primary_release_date.gte=2023-01-01&primary_release_date.lte=2023-04-16&with_watch_monetization_types=flatrate"
@@ -28,9 +32,12 @@ struct Request {
         case mostPopularWithKids = "&certification_country=US&certification.lte=G&sort_by=popularity.desc"
     }
     
-    static func getUrl(with path: UrlPath) -> URL? {
-        let path = path.rawValue
-        let urlString = baseURL + apiKey + language + path
+    static func getUrl(with path: Path, urlPath: UrlPath? = nil) -> URL? {
+        let midlePath = path.rawValue
+        var urlString = baseURL + midlePath + apiKey + language
+        if let path = urlPath?.rawValue {
+            urlString = urlString + path
+        }
         return URL(string: urlString)
     }
     

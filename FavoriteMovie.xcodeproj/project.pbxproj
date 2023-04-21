@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EEC2A0CA29F30AF500515542 /* GenresCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC2A0C929F30AF500515542 /* GenresCollectionViewCell.swift */; };
+		EEC2A0CC29F3248D00515542 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC2A0CB29F3248D00515542 /* Genre.swift */; };
 		EEDC29E129EB0CCB0091D963 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDC29E029EB0CCB0091D963 /* AppDelegate.swift */; };
 		EEDC29E329EB0CCB0091D963 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDC29E229EB0CCB0091D963 /* SceneDelegate.swift */; };
 		EEDC29E529EB0CCB0091D963 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDC29E429EB0CCB0091D963 /* HomeViewController.swift */; };
@@ -48,6 +50,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EEC2A0C929F30AF500515542 /* GenresCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenresCollectionViewCell.swift; sourceTree = "<group>"; };
+		EEC2A0CB29F3248D00515542 /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
 		EEDC29DD29EB0CCB0091D963 /* FavoriteMovie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FavoriteMovie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEDC29E029EB0CCB0091D963 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EEDC29E229EB0CCB0091D963 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -179,6 +183,7 @@
 			children = (
 				EEDC29E429EB0CCB0091D963 /* HomeViewController.swift */,
 				EEDC2A2829ECB8670091D963 /* HomeScreen.swift */,
+				EEC2A0C929F30AF500515542 /* GenresCollectionViewCell.swift */,
 				EEDC2A2D29ECD0100091D963 /* HomeMovieCollectionViewCell.swift */,
 				EEDC2A2F29ED7C220091D963 /* HomeViewViewModel.swift */,
 			);
@@ -199,6 +204,7 @@
 			children = (
 				EEDC2A2429ECAE1A0091D963 /* Movie.swift */,
 				EEDC2A2629ECAFE80091D963 /* List.swift */,
+				EEC2A0CB29F3248D00515542 /* Genre.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -350,11 +356,13 @@
 				EEDC29E529EB0CCB0091D963 /* HomeViewController.swift in Sources */,
 				EEDC2A2729ECAFE80091D963 /* List.swift in Sources */,
 				EEDC2A2929ECB8670091D963 /* HomeScreen.swift in Sources */,
+				EEC2A0CC29F3248D00515542 /* Genre.swift in Sources */,
 				EEDC2A2229EC81980091D963 /* Auth.swift in Sources */,
 				EEDC29E129EB0CCB0091D963 /* AppDelegate.swift in Sources */,
 				EEDC2A2E29ECD0100091D963 /* HomeMovieCollectionViewCell.swift in Sources */,
 				EEDC29E329EB0CCB0091D963 /* SceneDelegate.swift in Sources */,
 				EEDC2A2029EC7B490091D963 /* Request.swift in Sources */,
+				EEC2A0CA29F30AF500515542 /* GenresCollectionViewCell.swift in Sources */,
 				EEDC2A2529ECAE1A0091D963 /* Movie.swift in Sources */,
 				EEDC2A1429EB138C0091D963 /* LoginScreen.swift in Sources */,
 			);

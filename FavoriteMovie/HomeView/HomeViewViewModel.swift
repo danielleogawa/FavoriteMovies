@@ -9,6 +9,7 @@ import UIKit
 
 protocol HomeViewViewModelDelegate {
     func updateCollectionView()
+    func updateGenreCollectionView()
 }
 
 final class HomeViewViewModel {
@@ -16,16 +17,25 @@ final class HomeViewViewModel {
     var delegate: HomeViewViewModelDelegate?
     
     private(set) var mainMovies = [Movie]() {
-        didSet { delegate?.updateCollectionView() }
+        didSet {
+            delegate?.updateCollectionView()
+        }
+    }
+    
+    private(set) var genres = [Genre]() {
+        didSet {
+            delegate?.updateGenreCollectionView()
+        }
     }
     
     init(delegate: HomeViewViewModelDelegate) {
         self.delegate = delegate
         getMovies()
+        getGenres()
     }
     
     private func getMovies() {
-        let url = Request.getUrl(with: .onTheatres)
+        let url = Request.getUrl(with: .discover, urlPath: .onTheatres)
         
         Request.request(url: url, expecting: List.self) { result in
             switch result {
@@ -38,6 +48,24 @@ final class HomeViewViewModel {
             }
         }
     }
+    
+    private func getGenres() {
+        let url = Request.getUrl(with: .genre)
+        
+        Request.request(url: url, expecting: GenreList.self) { result in
+            switch result {
+            case .success(let genreList):
+                self.genres = genreList.genres ?? []
+            case .failure(_):
+                self.genres = []
+            }
+        }
+    }
+    
+    func getGenre(of row: Int) -> Genre {
+        return genres[row]
+    }
+    
     
     func getImage(movie: Movie?, completion: @escaping (UIImage) -> Void) {
         guard let posterPath = movie?.posterPath,

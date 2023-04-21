@@ -8,7 +8,7 @@
 import UIKit
 
 class HomeViewController: UIViewController {
-
+    
     var viewModel: HomeViewViewModel?
     var screen: HomeScreen?
     
@@ -21,6 +21,7 @@ class HomeViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
         self.screen = HomeScreen()
         self.screen?.setDelegate(delegate: self)
+        self.screen?.setDelegateGener(delegate: self)
         self.viewModel = HomeViewViewModel(delegate: self)
     }
     
@@ -36,7 +37,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         setNavigationBar()
     }
-
+    
     func setNavigationBar() {
         let apparence = UINavigationBarAppearance()
         apparence.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
@@ -49,33 +50,57 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel?.mainMovies.count ?? 0
+        if collectionView == screen?.onTheatresCollectionView {
+            return viewModel?.mainMovies.count ?? 0
+        }
+        if collectionView == screen?.genresCollectionView {
+            return viewModel?.genres.count ?? 0 
+        }
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeMovieCollectionViewCell.identifier, for: indexPath) as? HomeMovieCollectionViewCell {
-            
-            //TODO: refatorar
-            
+        
+        if collectionView == screen?.onTheatresCollectionView,
+           let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeMovieCollectionViewCell.identifier,
+                                                         for: indexPath) as? HomeMovieCollectionViewCell {
             let movie = viewModel?.mainMovies[indexPath.row]
             viewModel?.getImage(movie: movie, completion: { downloadedImage in
                 cell.setCell(with: downloadedImage, movie: movie)
             })
             return cell
         }
+        if collectionView == screen?.genresCollectionView,
+           let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GenresCollectionViewCell.identifier,
+                                                         for: indexPath) as? GenresCollectionViewCell {
+            let genre = viewModel?.getGenre(of: indexPath.row)
+            cell.setCell(genreTitle: genre?.name)
+            return cell
+        }
         return UICollectionViewCell()
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: self.view.bounds.width, height: 600)
+        if collectionView == screen?.onTheatresCollectionView {
+            return CGSize(width: self.view.bounds.width, height: 600)
+        } else if collectionView == screen?.genresCollectionView {
+            return CGSize(width: 100, height: 100)
+        }
+        return CGSize(width: 0, height: 0)
     }
-
+    
 }
 
 extension HomeViewController: HomeViewViewModelDelegate {
+    func updateGenreCollectionView() {
+        DispatchQueue.main.async {
+            self.screen?.genresCollectionView.reloadData()
+        }
+    }
+    
     func updateCollectionView() {
         DispatchQueue.main.async {
-            self.screen?.mainCollectionView.reloadData()
+            self.screen?.onTheatresCollectionView.reloadData()
         }
     }
 }
