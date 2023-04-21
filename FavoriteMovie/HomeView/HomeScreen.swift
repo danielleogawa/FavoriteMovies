@@ -9,7 +9,7 @@ import UIKit
 
 final class HomeScreen: UIView {
     
-    typealias Delegate = UITableViewDelegate & UITableViewDataSource
+    typealias Delegate = UICollectionViewDataSource & UICollectionViewDelegate
     
     lazy var gradientBackground: CAGradientLayer = {
         let element = CAGradientLayer()
@@ -22,20 +22,39 @@ final class HomeScreen: UIView {
         return element
     }()
     
-    lazy var homeTableView: UITableView = {
-        let element = UITableView()
+    lazy var contentView: UIView = {
+        let element = UIView()
         element.translatesAutoresizingMaskIntoConstraints = false
-        element.backgroundColor = .clear
-        element.allowsSelection = false
-        element.separatorStyle = .none
-        element.register(OnTheatresTableViewCell.self, forCellReuseIdentifier: OnTheatresTableViewCell.identifier)
-//        element.isScrollEnabled = true
+//        element.backgroundColor = .blue
         return element
     }()
-
+    
+    lazy var scrollView: UIScrollView = {
+        let element = UIScrollView()
+        element.translatesAutoresizingMaskIntoConstraints = false
+        return element
+    }()
+    
+    lazy var mainCollectionView: UICollectionView = {
+        let element = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout.init())
+        element.translatesAutoresizingMaskIntoConstraints = false
+        element.showsHorizontalScrollIndicator = false
+        element.backgroundColor = .clear
+        element.delaysContentTouches = false
+        element.isPagingEnabled = true
+        element.contentInsetAdjustmentBehavior = .never
+        let layout = UICollectionViewFlowLayout()
+        layout.minimumLineSpacing = 0
+        layout.scrollDirection = .horizontal
+        element.setCollectionViewLayout(layout, animated: true)
+        element.register(HomeMovieCollectionViewCell.self, forCellWithReuseIdentifier: HomeMovieCollectionViewCell.identifier)
+        return element
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setTableView()
+        setCollectionView()
+        setScrollView()
         
     }
     
@@ -49,17 +68,38 @@ final class HomeScreen: UIView {
     }
     
     func setDelegate(delegate: Delegate) {
-        self.homeTableView.delegate = delegate
-        self.homeTableView.dataSource = delegate
+        self.mainCollectionView.delegate = delegate
+        self.mainCollectionView.dataSource = delegate
     }
     
-    func setTableView() {
-        addSubview(homeTableView)
+    func setScrollView() {
+        addSubview(scrollView)
+        scrollView.addSubview(contentView)
+        
+        NSLayoutConstraint.activate([scrollView.centerXAnchor.constraint(equalTo: centerXAnchor),
+                                     scrollView.widthAnchor.constraint(equalTo: widthAnchor),
+                                     scrollView.topAnchor.constraint(equalTo: topAnchor),
+                                     scrollView.bottomAnchor.constraint(equalTo: bottomAnchor),
+                                     
+                                     contentView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
+                                     contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+                                     contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+                                     contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+                                     contentView.heightAnchor.constraint(equalToConstant: 1000),
+                                    ])
+    }
+    
+    
+    
+    func setCollectionView() {
+        contentView.addSubview(mainCollectionView)
         NSLayoutConstraint.activate([
-            homeTableView.topAnchor.constraint(equalTo: topAnchor),
-            homeTableView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            homeTableView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            homeTableView.trailingAnchor.constraint(equalTo: trailingAnchor)
+            mainCollectionView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            mainCollectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            mainCollectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            mainCollectionView.heightAnchor.constraint(equalToConstant: 600)
         ])
     }
+    
 }
+

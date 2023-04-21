@@ -54,6 +54,9 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeMovieCollectionViewCell.identifier, for: indexPath) as? HomeMovieCollectionViewCell {
+            
+            //TODO: refatorar
+            
             let movie = viewModel?.mainMovies[indexPath.row]
             viewModel?.getImage(movie: movie, completion: { downloadedImage in
                 cell.setCell(with: downloadedImage, movie: movie)
@@ -69,30 +72,10 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
 
 }
 
-
-extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 0 {
-            if let cell = tableView.dequeueReusableCell(withIdentifier: OnTheatresTableViewCell.identifier, for: indexPath) as? OnTheatresTableViewCell {
-                cell.setDelegate(delegate: self)
-//                viewModel?.delegate?.updateCollectionView(cell: cell.collectionView)
-              return cell
-            }
-        }
-        return UITableViewCell()
-    }
-    
-    
-}
-
 extension HomeViewController: HomeViewViewModelDelegate {
-    func updateCollectionView(cell: UICollectionView?) {
+    func updateCollectionView() {
         DispatchQueue.main.async {
-            cell?.reloadData()
+            self.screen?.mainCollectionView.reloadData()
         }
     }
 }

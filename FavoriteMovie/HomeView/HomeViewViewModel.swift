@@ -8,7 +8,7 @@
 import UIKit
 
 protocol HomeViewViewModelDelegate {
-    func updateCollectionView(cell: UICollectionView?)
+    func updateCollectionView()
 }
 
 final class HomeViewViewModel {
@@ -16,7 +16,7 @@ final class HomeViewViewModel {
     var delegate: HomeViewViewModelDelegate?
     
     private(set) var mainMovies = [Movie]() {
-        didSet { delegate?.updateCollectionView(cell: nil) }
+        didSet { delegate?.updateCollectionView() }
     }
     
     init(delegate: HomeViewViewModelDelegate) {
@@ -50,4 +50,7 @@ final class HomeViewViewModel {
             }
         }
     }
+    
+    
+    
 }
