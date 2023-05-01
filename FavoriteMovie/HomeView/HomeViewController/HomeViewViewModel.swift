@@ -66,19 +66,4 @@ final class HomeViewViewModel {
         return genres[row]
     }
     
-    
-    func getImage(movie: Movie?, completion: @escaping (UIImage) -> Void) {
-        guard let posterPath = movie?.posterPath,
-              let url = Request.getImageURL(posterPath: posterPath) else {
-            return
-        }
-        Request.downloadImage(from: url) { result, _  in
-            if let result {
-                completion(result)
-            }
-        }
-    }
-    
-    
-    
 }

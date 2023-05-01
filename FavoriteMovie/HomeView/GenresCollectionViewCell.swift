@@ -37,7 +37,6 @@ class GenresCollectionViewCell: UICollectionViewCell {
         element.textColor = .white
         element.font = .systemFont(ofSize: 12, weight: .medium)
         element.lineBreakStrategy = .standard
-        element.text = "teste"
         return element
     }()
 

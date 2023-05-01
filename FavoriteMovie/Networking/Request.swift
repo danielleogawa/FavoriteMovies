@@ -23,6 +23,10 @@ struct Request {
     enum Path: String {
         case discover = "/discover/movie"
         case genre = "/genre/movie/list"
+        case popularMovies = "/movie/popular"
+        case upComingMovies = "/movie/upcoming"
+        case lastedMovies = "/movie/latest"
+        case nowPlayingMovies = "/movie/now_playing"
     }
     
     enum UrlPath: String {
@@ -95,4 +99,17 @@ struct Request {
         }
         task.resume()
     }
+    
+    static func getImage(movie: Movie?, completion: @escaping (UIImage) -> Void) {
+        guard let posterPath = movie?.posterPath,
+              let url = Request.getImageURL(posterPath: posterPath) else {
+            return
+        }
+        Request.downloadImage(from: url) { result, _  in
+            if let result {
+                completion(result)
+            }
+        }
+    }
+    
 }

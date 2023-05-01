@@ -9,7 +9,8 @@ import UIKit
 
 final class HomeScreen: UIView {
     
-    typealias Delegate = UICollectionViewDataSource & UICollectionViewDelegate
+    typealias CollectionViewDelegate = UICollectionViewDataSource & UICollectionViewDelegate
+    typealias TableViewDelegate = UITableViewDelegate & UITableViewDataSource
     
     lazy var gradientBackground: CAGradientLayer = {
         let element = CAGradientLayer()
@@ -25,7 +26,6 @@ final class HomeScreen: UIView {
     lazy var contentView: UIView = {
         let element = UIView()
         element.translatesAutoresizingMaskIntoConstraints = false
-//        element.backgroundColor = .blue
         return element
     }()
     
@@ -67,11 +67,20 @@ final class HomeScreen: UIView {
         return element
     }()
     
+    lazy var tableView: UITableView = {
+        let element = UITableView()
+        element.backgroundColor = .clear
+        element.allowsSelection = false
+        element.translatesAutoresizingMaskIntoConstraints = false
+        return element
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setScrollView()
         setOnTheatresCollectionViewCollectionView()
         setGenresCollectionViewCollectionView()
+        setHightLightsTableViewCollectionView()
         
     }
     
@@ -84,16 +93,22 @@ final class HomeScreen: UIView {
         layer.insertSublayer(gradientBackground, at: 0)
     }
     
-    func setDelegate(delegate: Delegate) {
+    func setDelegate(delegate: CollectionViewDelegate) {
         self.onTheatresCollectionView.delegate = delegate
         self.onTheatresCollectionView.dataSource = delegate
         self.onTheatresCollectionView.register(HomeMovieCollectionViewCell.self, forCellWithReuseIdentifier: HomeMovieCollectionViewCell.identifier)
     }
     
-    func setDelegateGener(delegate: Delegate) {
+    func setDelegateGener(delegate: CollectionViewDelegate) {
         self.genresCollectionView.delegate = delegate
         self.genresCollectionView.dataSource = delegate
         self.genresCollectionView.register(GenresCollectionViewCell.self, forCellWithReuseIdentifier: GenresCollectionViewCell.identifier)
+    }
+    
+    func setTableViewDelegate(delegate: TableViewDelegate) {
+        self.tableView.delegate = delegate
+        self.tableView.dataSource = delegate
+        self.tableView.register(HighLightsMoviesTableViewCell.self, forCellReuseIdentifier: HighLightsMoviesTableViewCell.identifier)
     }
     
     func setScrollView() {
@@ -104,12 +119,11 @@ final class HomeScreen: UIView {
                                      scrollView.widthAnchor.constraint(equalTo: widthAnchor),
                                      scrollView.topAnchor.constraint(equalTo: topAnchor),
                                      scrollView.bottomAnchor.constraint(equalTo: bottomAnchor),
-                                     
                                      contentView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
                                      contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
                                      contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
                                      contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-                                     contentView.heightAnchor.constraint(equalToConstant: 1000),
+                                     contentView.heightAnchor.constraint(equalToConstant: 1700),
                                     ])
     }
     
@@ -132,6 +146,16 @@ final class HomeScreen: UIView {
             genresCollectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             genresCollectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             genresCollectionView.heightAnchor.constraint(equalToConstant: 100)
+        ])
+    }
+    
+    func setHightLightsTableViewCollectionView() {
+        contentView.addSubview(tableView)
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: genresCollectionView.bottomAnchor),
+            tableView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            tableView.heightAnchor.constraint(equalToConstant: 1000)
         ])
     }
 }

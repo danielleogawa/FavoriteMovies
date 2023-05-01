@@ -22,6 +22,7 @@ class HomeViewController: UIViewController {
         self.screen = HomeScreen()
         self.screen?.setDelegate(delegate: self)
         self.screen?.setDelegateGener(delegate: self)
+        self.screen?.setTableViewDelegate(delegate: self)
         self.viewModel = HomeViewViewModel(delegate: self)
     }
     
@@ -65,7 +66,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeMovieCollectionViewCell.identifier,
                                                          for: indexPath) as? HomeMovieCollectionViewCell {
             let movie = viewModel?.mainMovies[indexPath.row]
-            viewModel?.getImage(movie: movie, completion: { downloadedImage in
+            Request.getImage(movie: movie, completion: { downloadedImage in
                 cell.setCell(with: downloadedImage, movie: movie)
             })
             return cell
@@ -87,6 +88,24 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             return CGSize(width: 100, height: 100)
         }
         return CGSize(width: 0, height: 0)
+    }
+}
+
+extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return CollectionViewCategories.allCases.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: HighLightsMoviesTableViewCell.identifier, for: indexPath) as? HighLightsMoviesTableViewCell {
+            cell.setCellForRow(indexPath.row)
+            return cell
+        }
+        return UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return CGFloat(300)
     }
     
 }
