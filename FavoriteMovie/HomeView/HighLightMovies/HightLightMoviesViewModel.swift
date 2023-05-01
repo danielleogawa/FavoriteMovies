@@ -11,6 +11,48 @@ protocol HightLightMoviesDelegate {
     func updateCollectionView()
 }
 
+enum CollectionViewCategories: CaseIterable {
+    case popularMovies
+    case upComing
+    case nowPlaying
+    
+    var url: URL? {
+        switch self {
+        case .popularMovies:
+           return Request.getUrl(with: .popularMovies)
+        case .upComing:
+            return Request.getUrl(with: .upComingMovies)
+        case .nowPlaying:
+            return Request.getUrl(with: .nowPlayingMovies)
+        }
+    }
+    
+    var title: String {
+        switch self {
+        case .popularMovies:
+            return "Popular Movies"
+        case .upComing:
+            return "Up Coming Movies"
+        case .nowPlaying:
+            return "Now Playing"
+        }
+    }
+    
+    func getCategories(completion: @escaping ([Movie]) -> Void){
+        Request.request(url: self.url, expecting: List.self) { result in
+            switch result {
+            case .success(let list):
+                if let listMovies = list.results {
+                    completion(listMovies)
+                }
+            case .failure(_):
+                 break
+            }
+        }
+    }
+}
+
+
 final class HightLightMoviesViewModel {
     var delegate: HightLightMoviesDelegate?
     
@@ -32,36 +74,6 @@ final class HightLightMoviesViewModel {
         }
     }
     
-    enum CollectionViewCategories: CaseIterable {
-        case popularMovies
-        case upComing
-        case nowPlaying
-        
-        var url: URL? {
-            switch self {
-            case .popularMovies:
-               return Request.getUrl(with: .popularMovies)
-            case .upComing:
-                return Request.getUrl(with: .upComingMovies)
-            case .nowPlaying:
-                return Request.getUrl(with: .nowPlayingMovies)
-            }
-        }
-        
-        func getCategories(completion: @escaping ([Movie]) -> Void){
-            Request.request(url: self.url, expecting: List.self) { result in
-                switch result {
-                case .success(let list):
-                    if let listMovies = list.results {
-                        completion(listMovies)
-                    }
-                case .failure(_):
-                     break
-                }
-            }
-        }
-    }
-    
     private var categoryRow: Int?
 
     init(delegate: HightLightMoviesDelegate? = nil) {
@@ -74,6 +86,7 @@ final class HightLightMoviesViewModel {
     }
     
     func getCurrentlyCategory() -> [Movie] {
+        //Melhorar para pegar ordem do enum
         let categories = [popularMovies, upComingMovies, nowPlayingMovies]
         return categories[categoryRow ?? 0]
     }
@@ -96,6 +109,10 @@ final class HightLightMoviesViewModel {
     
     func getMovie(row: Int) -> Movie? {
         return getCurrentlyCategory()[row]
+    }
+    
+    func getSectionTitle(row: Int) -> String {
+        return CollectionViewCategories.allCases[row].title
     }
 }
 

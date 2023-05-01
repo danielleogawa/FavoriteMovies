@@ -29,13 +29,20 @@ class HighLightsMoviesTableViewCell: UITableViewCell, HightLightMoviesDelegate {
         return element
     }()
     
+    lazy var highLightedSectionLabel: UILabel = {
+        let element = UILabel()
+        element.translatesAutoresizingMaskIntoConstraints = false
+        element.font.withSize(16)
+        element.textColor = .white
+        return element
+    }()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.viewModel = HightLightMoviesViewModel(delegate: self)
         self.backgroundColor = .clear
-        collectionView.register(HightLightMovieCollectionViewCell.self, forCellWithReuseIdentifier: HightLightMovieCollectionViewCell.identifier)
-        collectionView.delegate = self
-        collectionView.dataSource = self
+        setCollectionViewDelegate()
+        setSectionLabel()
         setCollectionView()
     }
     
@@ -43,18 +50,38 @@ class HighLightsMoviesTableViewCell: UITableViewCell, HightLightMoviesDelegate {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setCollectionView() {
-        contentView.addSubview(collectionView)
+    private func setCollectionViewDelegate() {
+        collectionView.register(HightLightMovieCollectionViewCell.self, forCellWithReuseIdentifier: HightLightMovieCollectionViewCell.identifier)
+        collectionView.delegate = self
+        collectionView.dataSource = self
+    }
+    
+    private func setSectionLabel() {
+        contentView.addSubview(highLightedSectionLabel)
         NSLayoutConstraint.activate([
-            collectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            collectionView.topAnchor.constraint(equalTo: contentView.topAnchor)
+            highLightedSectionLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
+            highLightedSectionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            highLightedSectionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            highLightedSectionLabel.heightAnchor.constraint(equalToConstant: 24)
+            
         ])
     }
     
+    private func setCollectionView() {
+        contentView.addSubview(collectionView)
+        NSLayoutConstraint.activate([
+            collectionView.topAnchor.constraint(equalTo: highLightedSectionLabel.bottomAnchor, constant: 8),
+            collectionView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+        ])
+    }
+    
+
+    
     func setCellForRow(_ row: Int){
         viewModel?.setCategoryOfRow(row)
+        self.highLightedSectionLabel.text = viewModel?.getSectionTitle(row: row)
     }
     
 }
@@ -77,7 +104,11 @@ extension HighLightsMoviesTableViewCell: UICollectionViewDelegate, UICollectionV
         return UICollectionViewCell()
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 100, height: 200)
+        return CGSize(width: 170, height: 270)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let movie = viewModel?.getMovie(row: indexPath.row)
     }
     
     func updateCollectionView() {

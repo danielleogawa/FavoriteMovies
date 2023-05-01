@@ -26,7 +26,6 @@ final class HomeScreen: UIView {
     lazy var contentView: UIView = {
         let element = UIView()
         element.translatesAutoresizingMaskIntoConstraints = false
-//        element.backgroundColor = .blue
         return element
     }()
     
@@ -71,6 +70,7 @@ final class HomeScreen: UIView {
     lazy var tableView: UITableView = {
         let element = UITableView()
         element.backgroundColor = .clear
+        element.allowsSelection = false
         element.translatesAutoresizingMaskIntoConstraints = false
         return element
     }()
@@ -119,7 +119,6 @@ final class HomeScreen: UIView {
                                      scrollView.widthAnchor.constraint(equalTo: widthAnchor),
                                      scrollView.topAnchor.constraint(equalTo: topAnchor),
                                      scrollView.bottomAnchor.constraint(equalTo: bottomAnchor),
-                                     
                                      contentView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
                                      contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
                                      contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
@@ -156,7 +155,6 @@ final class HomeScreen: UIView {
             tableView.topAnchor.constraint(equalTo: genresCollectionView.bottomAnchor),
             tableView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            
             tableView.heightAnchor.constraint(equalToConstant: 1000)
         ])
     }
