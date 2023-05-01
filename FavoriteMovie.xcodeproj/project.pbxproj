@@ -11,6 +11,7 @@
 		EEC2A0CC29F3248D00515542 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC2A0CB29F3248D00515542 /* Genre.swift */; };
 		EEC2A0D22A0020C900515542 /* HighLightsMoviesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC2A0D12A0020C900515542 /* HighLightsMoviesTableViewCell.swift */; };
 		EEC2A0D42A00222700515542 /* HightLightMovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC2A0D32A00222700515542 /* HightLightMovieCollectionViewCell.swift */; };
+		EEC2A0D82A00406C00515542 /* HightLightMoviesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC2A0D72A00406C00515542 /* HightLightMoviesViewModel.swift */; };
 		EEDC29E129EB0CCB0091D963 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDC29E029EB0CCB0091D963 /* AppDelegate.swift */; };
 		EEDC29E329EB0CCB0091D963 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDC29E229EB0CCB0091D963 /* SceneDelegate.swift */; };
 		EEDC29E529EB0CCB0091D963 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDC29E429EB0CCB0091D963 /* HomeViewController.swift */; };
@@ -56,6 +57,7 @@
 		EEC2A0CB29F3248D00515542 /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
 		EEC2A0D12A0020C900515542 /* HighLightsMoviesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighLightsMoviesTableViewCell.swift; sourceTree = "<group>"; };
 		EEC2A0D32A00222700515542 /* HightLightMovieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HightLightMovieCollectionViewCell.swift; sourceTree = "<group>"; };
+		EEC2A0D72A00406C00515542 /* HightLightMoviesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HightLightMoviesViewModel.swift; sourceTree = "<group>"; };
 		EEDC29DD29EB0CCB0091D963 /* FavoriteMovie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FavoriteMovie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEDC29E029EB0CCB0091D963 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EEDC29E229EB0CCB0091D963 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -108,6 +110,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EEC2A0D52A00403000515542 /* HomeViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EEDC29E429EB0CCB0091D963 /* HomeViewController.swift */,
+				EEDC2A2829ECB8670091D963 /* HomeScreen.swift */,
+				EEDC2A2F29ED7C220091D963 /* HomeViewViewModel.swift */,
+			);
+			path = HomeViewController;
+			sourceTree = "<group>";
+		};
+		EEC2A0D62A00404700515542 /* HighLightMovies */ = {
+			isa = PBXGroup;
+			children = (
+				EEC2A0D12A0020C900515542 /* HighLightsMoviesTableViewCell.swift */,
+				EEC2A0D32A00222700515542 /* HightLightMovieCollectionViewCell.swift */,
+				EEC2A0D72A00406C00515542 /* HightLightMoviesViewModel.swift */,
+			);
+			path = HighLightMovies;
+			sourceTree = "<group>";
+		};
 		EEDC29D429EB0CCB0091D963 = {
 			isa = PBXGroup;
 			children = (
@@ -185,13 +207,10 @@
 		EEDC2A1A29EC46130091D963 /* HomeView */ = {
 			isa = PBXGroup;
 			children = (
-				EEDC29E429EB0CCB0091D963 /* HomeViewController.swift */,
-				EEDC2A2829ECB8670091D963 /* HomeScreen.swift */,
-				EEC2A0D12A0020C900515542 /* HighLightsMoviesTableViewCell.swift */,
-				EEC2A0D32A00222700515542 /* HightLightMovieCollectionViewCell.swift */,
+				EEC2A0D62A00404700515542 /* HighLightMovies */,
+				EEC2A0D52A00403000515542 /* HomeViewController */,
 				EEC2A0C929F30AF500515542 /* GenresCollectionViewCell.swift */,
 				EEDC2A2D29ECD0100091D963 /* HomeMovieCollectionViewCell.swift */,
-				EEDC2A2F29ED7C220091D963 /* HomeViewViewModel.swift */,
 			);
 			path = HomeView;
 			sourceTree = "<group>";
@@ -366,6 +385,7 @@
 				EEC2A0CC29F3248D00515542 /* Genre.swift in Sources */,
 				EEDC2A2229EC81980091D963 /* Auth.swift in Sources */,
 				EEDC29E129EB0CCB0091D963 /* AppDelegate.swift in Sources */,
+				EEC2A0D82A00406C00515542 /* HightLightMoviesViewModel.swift in Sources */,
 				EEDC2A2E29ECD0100091D963 /* HomeMovieCollectionViewCell.swift in Sources */,
 				EEDC29E329EB0CCB0091D963 /* SceneDelegate.swift in Sources */,
 				EEDC2A2029EC7B490091D963 /* Request.swift in Sources */,

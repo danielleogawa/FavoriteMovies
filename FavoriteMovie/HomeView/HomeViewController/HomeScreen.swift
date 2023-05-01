@@ -124,7 +124,7 @@ final class HomeScreen: UIView {
                                      contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
                                      contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
                                      contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-                                     contentView.heightAnchor.constraint(equalToConstant: 1000),
+                                     contentView.heightAnchor.constraint(equalToConstant: 1700),
                                     ])
     }
     
@@ -156,7 +156,8 @@ final class HomeScreen: UIView {
             tableView.topAnchor.constraint(equalTo: genresCollectionView.bottomAnchor),
             tableView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            tableView.heightAnchor.constraint(equalToConstant: 600)
+            
+            tableView.heightAnchor.constraint(equalToConstant: 1000)
         ])
     }
 }

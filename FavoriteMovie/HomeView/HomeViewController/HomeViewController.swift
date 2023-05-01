@@ -66,7 +66,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeMovieCollectionViewCell.identifier,
                                                          for: indexPath) as? HomeMovieCollectionViewCell {
             let movie = viewModel?.mainMovies[indexPath.row]
-            viewModel?.getImage(movie: movie, completion: { downloadedImage in
+            Request.getImage(movie: movie, completion: { downloadedImage in
                 cell.setCell(with: downloadedImage, movie: movie)
             })
             return cell
@@ -93,18 +93,21 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return 3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: HighLightsMoviesTableViewCell.identifier, for: indexPath) as? HighLightsMoviesTableViewCell {
+            cell.setCellForRow(indexPath.row)
             return cell
         }
         return UITableViewCell()
     }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return CGFloat(100)
+        return CGFloat(200)
     }
+    
 }
 
 extension HomeViewController: HomeViewViewModelDelegate {
