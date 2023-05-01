@@ -7,49 +7,17 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "5989BD88-23D2-4539-8C23-D0E0FF729EC5"
+            uuid = "B246EF4E-9A7E-44A5-98F5-DED1FC348F4F"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FavoriteMovie/HomeView/HomeViewViewModel.swift"
+            filePath = "FavoriteMovie/HomeView/HighLightsMoviesTableViewCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
-            landmarkName = "getGenres()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "5989BD88-23D2-4539-8C23-D0E0FF729EC5 - 71aa22ce38783332"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "FavoriteMovie.HomeViewViewModel.getGenres() -&gt; ()"
-                  moduleName = "FavoriteMovie"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/daniellenozakiogawa/Library/Mobile%20Documents/com~apple~CloudDocs/xcode/FavoriteMovie/FavoriteMovie/HomeView/HomeViewViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "55"
-                  endingLineNumber = "55"
-                  offsetFromSymbolStart = "100">
-               </Location>
-               <Location
-                  uuid = "5989BD88-23D2-4539-8C23-D0E0FF729EC5 - 9e3f0bc18b4e9a88"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Result&lt;FavoriteMovie.GenreList, Swift.Error&gt;) -&gt; () in FavoriteMovie.HomeViewViewModel.getGenres() -&gt; ()"
-                  moduleName = "FavoriteMovie"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/daniellenozakiogawa/Library/Mobile%20Documents/com~apple~CloudDocs/xcode/FavoriteMovie/FavoriteMovie/HomeView/HomeViewViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "57"
-                  endingLineNumber = "57"
-                  offsetFromSymbolStart = "84">
-               </Location>
-            </Locations>
+            startingLineNumber = "10"
+            endingLineNumber = "10"
+            landmarkName = "HighLightsMoviesTableViewCell"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

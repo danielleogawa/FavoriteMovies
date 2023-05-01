@@ -22,6 +22,7 @@ class HomeViewController: UIViewController {
         self.screen = HomeScreen()
         self.screen?.setDelegate(delegate: self)
         self.screen?.setDelegateGener(delegate: self)
+        self.screen?.setTableViewDelegate(delegate: self)
         self.viewModel = HomeViewViewModel(delegate: self)
     }
     
@@ -88,7 +89,22 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         }
         return CGSize(width: 0, height: 0)
     }
+}
+
+extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
     
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: HighLightsMoviesTableViewCell.identifier, for: indexPath) as? HighLightsMoviesTableViewCell {
+            return cell
+        }
+        return UITableViewCell()
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return CGFloat(100)
+    }
 }
 
 extension HomeViewController: HomeViewViewModelDelegate {
