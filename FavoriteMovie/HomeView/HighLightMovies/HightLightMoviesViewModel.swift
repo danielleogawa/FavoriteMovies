@@ -11,18 +11,18 @@ protocol HightLightMoviesDelegate {
     func updateCollectionView()
 }
 
-enum CollectionViewCategories: CaseIterable {
-    case popularMovies
-    case upComing
-    case nowPlaying
+enum CollectionViewCategories: String, CaseIterable {
+    case popularMovies = "popularMovies"
+    case upComingMovies = "upComingMovies"
+    case nowPlayingMovies = "nowPlayingMovies"
     
     var url: URL? {
         switch self {
         case .popularMovies:
            return Request.getUrl(with: .popularMovies)
-        case .upComing:
+        case .upComingMovies:
             return Request.getUrl(with: .upComingMovies)
-        case .nowPlaying:
+        case .nowPlayingMovies:
             return Request.getUrl(with: .nowPlayingMovies)
         }
     }
@@ -31,9 +31,9 @@ enum CollectionViewCategories: CaseIterable {
         switch self {
         case .popularMovies:
             return "Popular Movies"
-        case .upComing:
+        case .upComingMovies:
             return "Up Coming Movies"
-        case .nowPlaying:
+        case .nowPlayingMovies:
             return "Now Playing"
         }
     }
@@ -86,8 +86,18 @@ final class HightLightMoviesViewModel {
     }
     
     func getCurrentlyCategory() -> [Movie] {
-        //Melhorar para pegar ordem do enum
-        let categories = [popularMovies, upComingMovies, nowPlayingMovies]
+        let categoriesEnum = CollectionViewCategories.allCases
+        var categories: [[Movie]] = []
+
+        categoriesEnum.forEach { category in
+            if category.rawValue == CollectionViewCategories.popularMovies.rawValue {
+                categories.append(popularMovies)
+            } else if category.rawValue == CollectionViewCategories.nowPlayingMovies.rawValue {
+                categories.append(nowPlayingMovies)
+            } else if category.rawValue == CollectionViewCategories.upComingMovies.rawValue {
+                categories.append(upComingMovies)
+            }
+        }
         return categories[categoryRow ?? 0]
     }
     
@@ -99,10 +109,10 @@ final class HightLightMoviesViewModel {
         CollectionViewCategories.popularMovies.getCategories { movies in
             self.popularMovies = movies
         }
-        CollectionViewCategories.nowPlaying.getCategories { movies in
+        CollectionViewCategories.nowPlayingMovies.getCategories { movies in
             self.nowPlayingMovies = movies
         }
-        CollectionViewCategories.upComing.getCategories { movies in
+        CollectionViewCategories.upComingMovies.getCategories { movies in
             self.upComingMovies = movies
         }
     }
