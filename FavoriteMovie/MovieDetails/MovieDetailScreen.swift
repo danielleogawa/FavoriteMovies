@@ -50,9 +50,8 @@ final class MovieDetailScreen: UIView {
         return element
     }()
     
-    lazy var contentView: UIView = {
+    lazy var contentViewBackground: UIView = {
         let element = UIView()
-//        element.backgroundColor = .red
         element.translatesAutoresizingMaskIntoConstraints = false
         return element
     }()
@@ -68,6 +67,22 @@ final class MovieDetailScreen: UIView {
         return element
     }()
     
+    lazy var contentView: UIView = {
+        let element = UIView()
+        element.translatesAutoresizingMaskIntoConstraints = false
+        return element
+    }()
+    
+    lazy var overviewLabel: UILabel = {
+        let element = UILabel()
+        element.translatesAutoresizingMaskIntoConstraints = false
+        element.numberOfLines = 0 
+        element.text = screenDelegate?.getOverview()
+        element.font.withSize(12)
+        element.textColor = .white.withAlphaComponent(0.8)
+        return element
+    }()
+    
     init(delegate: MovieDetailViewModelProtocol?) {
         super.init(frame: .zero)
         self.screenDelegate = delegate
@@ -75,6 +90,8 @@ final class MovieDetailScreen: UIView {
         setPosterImage()
         setImages()
         setContentView()
+        setScrollContentView()
+        setOverviewLabel()
     }
     
     required init?(coder: NSCoder) {
@@ -84,8 +101,8 @@ final class MovieDetailScreen: UIView {
     func setBackground( ){
         self.gradientBackground.frame = bounds
         layer.insertSublayer(gradientBackground, at: 0)
-        self.contentViewGradientBackground.frame = contentView.bounds
-        contentView.layer.addSublayer(contentViewGradientBackground)
+        self.contentViewGradientBackground.frame = contentViewBackground.bounds
+        contentViewBackground.layer.addSublayer(contentViewGradientBackground)
     }
     
 
@@ -117,6 +134,16 @@ final class MovieDetailScreen: UIView {
     }
     
     private func setContentView() {
+        scrollContentView.addSubview(contentViewBackground)
+        NSLayoutConstraint.activate([
+            contentViewBackground.topAnchor.constraint(equalTo: posterImage.bottomAnchor, constant: -100),
+            contentViewBackground.bottomAnchor.constraint(equalTo: scrollContentView.bottomAnchor),
+            contentViewBackground.trailingAnchor.constraint(equalTo: scrollContentView.trailingAnchor),
+            contentViewBackground.leadingAnchor.constraint(equalTo: scrollContentView.leadingAnchor)
+        ])
+    }
+    
+    private func setScrollContentView() {
         scrollContentView.addSubview(contentView)
         NSLayoutConstraint.activate([
             contentView.topAnchor.constraint(equalTo: posterImage.bottomAnchor, constant: -100),
@@ -126,12 +153,20 @@ final class MovieDetailScreen: UIView {
         ])
     }
     
+    private func setOverviewLabel() {
+        contentView.addSubview(overviewLabel)
+        NSLayoutConstraint.activate([
+            overviewLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 100),
+            overviewLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
+            overviewLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24)
+        ])
+    }
+    
     func setImages() {
         screenDelegate?.getPosterImage(completion: { image in
             self.posterImage.image = image
         })
     }
-    
     
     func setNavigationController(viewController: UIViewController) {
         viewController.navigationItem.title = screenDelegate?.getMovieTitle()

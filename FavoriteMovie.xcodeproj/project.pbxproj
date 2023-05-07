@@ -15,6 +15,7 @@
 		EEC2A0DC2A008DB300515542 /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC2A0DB2A008DB300515542 /* MovieDetailViewController.swift */; };
 		EEC2A0DE2A008DC800515542 /* MovieDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC2A0DD2A008DC800515542 /* MovieDetailViewModel.swift */; };
 		EEC2A0E02A00911800515542 /* MovieDetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC2A0DF2A00911800515542 /* MovieDetailScreen.swift */; };
+		EEC2A0E22A08008900515542 /* CompletedMovie.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC2A0E12A08008900515542 /* CompletedMovie.swift */; };
 		EEDC29E129EB0CCB0091D963 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDC29E029EB0CCB0091D963 /* AppDelegate.swift */; };
 		EEDC29E329EB0CCB0091D963 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDC29E229EB0CCB0091D963 /* SceneDelegate.swift */; };
 		EEDC29E529EB0CCB0091D963 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDC29E429EB0CCB0091D963 /* HomeViewController.swift */; };
@@ -30,7 +31,7 @@
 		EEDC2A1D29EC47A50091D963 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDC2A1C29EC47A50091D963 /* Colors.swift */; };
 		EEDC2A2029EC7B490091D963 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDC2A1F29EC7B490091D963 /* Request.swift */; };
 		EEDC2A2229EC81980091D963 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDC2A2129EC81980091D963 /* Auth.swift */; };
-		EEDC2A2529ECAE1A0091D963 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDC2A2429ECAE1A0091D963 /* Movie.swift */; };
+		EEDC2A2529ECAE1A0091D963 /* SimpleMovie.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDC2A2429ECAE1A0091D963 /* SimpleMovie.swift */; };
 		EEDC2A2729ECAFE80091D963 /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDC2A2629ECAFE80091D963 /* List.swift */; };
 		EEDC2A2929ECB8670091D963 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDC2A2829ECB8670091D963 /* HomeScreen.swift */; };
 		EEDC2A2C29ECBB520091D963 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDC2A2B29ECBB520091D963 /* TabBarViewController.swift */; };
@@ -64,6 +65,7 @@
 		EEC2A0DB2A008DB300515542 /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
 		EEC2A0DD2A008DC800515542 /* MovieDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewModel.swift; sourceTree = "<group>"; };
 		EEC2A0DF2A00911800515542 /* MovieDetailScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailScreen.swift; sourceTree = "<group>"; };
+		EEC2A0E12A08008900515542 /* CompletedMovie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedMovie.swift; sourceTree = "<group>"; };
 		EEDC29DD29EB0CCB0091D963 /* FavoriteMovie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FavoriteMovie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEDC29E029EB0CCB0091D963 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EEDC29E229EB0CCB0091D963 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -83,7 +85,7 @@
 		EEDC2A1C29EC47A50091D963 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Colors.swift; path = ../../../../../../Downloads/Colors.swift; sourceTree = "<group>"; };
 		EEDC2A1F29EC7B490091D963 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		EEDC2A2129EC81980091D963 /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
-		EEDC2A2429ECAE1A0091D963 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		EEDC2A2429ECAE1A0091D963 /* SimpleMovie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleMovie.swift; sourceTree = "<group>"; };
 		EEDC2A2629ECAFE80091D963 /* List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
 		EEDC2A2829ECB8670091D963 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		EEDC2A2B29ECBB520091D963 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
@@ -244,7 +246,8 @@
 		EEDC2A2329ECAE100091D963 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				EEDC2A2429ECAE1A0091D963 /* Movie.swift */,
+				EEDC2A2429ECAE1A0091D963 /* SimpleMovie.swift */,
+				EEC2A0E12A08008900515542 /* CompletedMovie.swift */,
 				EEDC2A2629ECAFE80091D963 /* List.swift */,
 				EEC2A0CB29F3248D00515542 /* Genre.swift */,
 			);
@@ -398,6 +401,7 @@
 				EEDC29E529EB0CCB0091D963 /* HomeViewController.swift in Sources */,
 				EEC2A0D22A0020C900515542 /* HighLightsMoviesTableViewCell.swift in Sources */,
 				EEDC2A2729ECAFE80091D963 /* List.swift in Sources */,
+				EEC2A0E22A08008900515542 /* CompletedMovie.swift in Sources */,
 				EEDC2A2929ECB8670091D963 /* HomeScreen.swift in Sources */,
 				EEC2A0CC29F3248D00515542 /* Genre.swift in Sources */,
 				EEDC2A2229EC81980091D963 /* Auth.swift in Sources */,
@@ -410,7 +414,7 @@
 				EEC2A0CA29F30AF500515542 /* GenresCollectionViewCell.swift in Sources */,
 				EEC2A0D42A00222700515542 /* HightLightMovieCollectionViewCell.swift in Sources */,
 				EEC2A0DE2A008DC800515542 /* MovieDetailViewModel.swift in Sources */,
-				EEDC2A2529ECAE1A0091D963 /* Movie.swift in Sources */,
+				EEDC2A2529ECAE1A0091D963 /* SimpleMovie.swift in Sources */,
 				EEC2A0DC2A008DB300515542 /* MovieDetailViewController.swift in Sources */,
 				EEDC2A1429EB138C0091D963 /* LoginScreen.swift in Sources */,
 			);

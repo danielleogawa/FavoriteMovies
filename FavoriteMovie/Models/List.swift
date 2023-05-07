@@ -9,7 +9,7 @@ import Foundation
 
 struct List: Codable {
     let page: Double?
-    let results: [Movie]?
+    let results: [SimpleMovie]?
     let totalPages: Double?
     let totalResults: Double?
 }

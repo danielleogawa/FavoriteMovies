@@ -57,7 +57,7 @@ class HomeMovieCollectionViewCell: UICollectionViewCell {
         ])
     }
     
-    func setCell(with image: UIImage?, movie: Movie?) {
+    func setCell(with image: UIImage?, movie: SimpleMovie?) {
             self.posterImage.image = image
     }
     

@@ -16,7 +16,7 @@ final class HomeViewViewModel {
     
     var delegate: HomeViewViewModelDelegate?
     
-    private(set) var mainMovies = [Movie]() {
+    private(set) var mainMovies = [SimpleMovie]() {
         didSet {
             delegate?.updateCollectionView()
         }
@@ -68,7 +68,7 @@ final class HomeViewViewModel {
     
     func getMovieDetailViewModel(row: Int) -> MovieDetailViewModel {
         let movie = mainMovies[row]
-        return MovieDetailViewModel(movie: movie)
+        return MovieDetailViewModel(movie: .init(simpleMovie: movie))
     }
     
 }

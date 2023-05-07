@@ -38,7 +38,7 @@ enum CollectionViewCategories: String, CaseIterable {
         }
     }
     
-    func getCategories(completion: @escaping ([Movie]) -> Void){
+    func getCategories(completion: @escaping ([SimpleMovie]) -> Void){
         Request.request(url: self.url, expecting: List.self) { result in
             switch result {
             case .success(let list):
@@ -56,19 +56,19 @@ enum CollectionViewCategories: String, CaseIterable {
 final class HightLightMoviesViewModel {
     var delegate: HightLightMoviesDelegate?
     
-    private(set) var popularMovies = [Movie]() {
+    private(set) var popularMovies = [SimpleMovie]() {
         didSet {
             delegate?.updateCollectionView()
         }
     }
     
-    private(set) var upComingMovies = [Movie]() {
+    private(set) var upComingMovies = [SimpleMovie]() {
         didSet {
             delegate?.updateCollectionView()
         }
     }
     
-    private(set) var nowPlayingMovies = [Movie]() {
+    private(set) var nowPlayingMovies = [SimpleMovie]() {
         didSet {
             delegate?.updateCollectionView()
         }
@@ -85,9 +85,9 @@ final class HightLightMoviesViewModel {
         self.categoryRow = row
     }
     
-    func getCurrentlyCategory() -> [Movie] {
+    func getCurrentlyCategory() -> [SimpleMovie] {
         let categoriesEnum = CollectionViewCategories.allCases
-        var categories: [[Movie]] = []
+        var categories: [[SimpleMovie]] = []
 
         categoriesEnum.forEach { category in
             if category.rawValue == CollectionViewCategories.popularMovies.rawValue {
@@ -117,7 +117,7 @@ final class HightLightMoviesViewModel {
         }
     }
     
-    func getMovie(row: Int) -> Movie? {
+    func getMovie(row: Int) -> SimpleMovie? {
         return getCurrentlyCategory()[row]
     }
     

@@ -16,7 +16,12 @@ struct Request {
     //TODO: get the user device laguage
     //TODO: get the current date
     
-    static let apiKey = ""
+    //https://api.themoviedb.org/3/movie/758323/similar?api_key=a929d511c730708e667fd7fe46098969&language=en-US&page=1 - similar movies
+    //https://api.themoviedb.org/3/movie/502356/credits?api_key=a929d511c730708e667fd7fe46098969&language=en-US - cast
+    //https://api.themoviedb.org/3/movie/758323/watch/providers?api_key=a929d511c730708e667fd7fe46098969 - onde assistir
+    //https://api.themoviedb.org/3/trending/movie/day?api_key=a929d511c730708e667fd7fe46098969 - movie trendings
+    
+    static let apiKey = "?api_key=a929d511c730708e667fd7fe46098969"
     static let language = "&language=en-US"
     static let baseURL = "https://api.themoviedb.org/3"
     
@@ -100,7 +105,7 @@ struct Request {
         task.resume()
     }
     
-    static func getImage(movie: Movie?, completion: @escaping (UIImage) -> Void) {
+    static func getImage(movie: SimpleMovie?, completion: @escaping (UIImage) -> Void) {
         guard let posterPath = movie?.posterPath,
               let url = Request.getImageURL(posterPath: posterPath) else {
             return
