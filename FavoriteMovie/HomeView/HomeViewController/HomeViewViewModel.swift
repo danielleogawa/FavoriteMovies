@@ -66,4 +66,9 @@ final class HomeViewViewModel {
         return genres[row]
     }
     
+    func getMovieDetailViewModel(row: Int) -> MovieDetailViewModel {
+        let movie = mainMovies[row]
+        return MovieDetailViewModel(movie: movie)
+    }
+    
 }

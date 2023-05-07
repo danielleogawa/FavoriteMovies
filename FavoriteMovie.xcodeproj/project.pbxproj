@@ -12,6 +12,9 @@
 		EEC2A0D22A0020C900515542 /* HighLightsMoviesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC2A0D12A0020C900515542 /* HighLightsMoviesTableViewCell.swift */; };
 		EEC2A0D42A00222700515542 /* HightLightMovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC2A0D32A00222700515542 /* HightLightMovieCollectionViewCell.swift */; };
 		EEC2A0D82A00406C00515542 /* HightLightMoviesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC2A0D72A00406C00515542 /* HightLightMoviesViewModel.swift */; };
+		EEC2A0DC2A008DB300515542 /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC2A0DB2A008DB300515542 /* MovieDetailViewController.swift */; };
+		EEC2A0DE2A008DC800515542 /* MovieDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC2A0DD2A008DC800515542 /* MovieDetailViewModel.swift */; };
+		EEC2A0E02A00911800515542 /* MovieDetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC2A0DF2A00911800515542 /* MovieDetailScreen.swift */; };
 		EEDC29E129EB0CCB0091D963 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDC29E029EB0CCB0091D963 /* AppDelegate.swift */; };
 		EEDC29E329EB0CCB0091D963 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDC29E229EB0CCB0091D963 /* SceneDelegate.swift */; };
 		EEDC29E529EB0CCB0091D963 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDC29E429EB0CCB0091D963 /* HomeViewController.swift */; };
@@ -58,6 +61,9 @@
 		EEC2A0D12A0020C900515542 /* HighLightsMoviesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighLightsMoviesTableViewCell.swift; sourceTree = "<group>"; };
 		EEC2A0D32A00222700515542 /* HightLightMovieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HightLightMovieCollectionViewCell.swift; sourceTree = "<group>"; };
 		EEC2A0D72A00406C00515542 /* HightLightMoviesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HightLightMoviesViewModel.swift; sourceTree = "<group>"; };
+		EEC2A0DB2A008DB300515542 /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
+		EEC2A0DD2A008DC800515542 /* MovieDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewModel.swift; sourceTree = "<group>"; };
+		EEC2A0DF2A00911800515542 /* MovieDetailScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailScreen.swift; sourceTree = "<group>"; };
 		EEDC29DD29EB0CCB0091D963 /* FavoriteMovie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FavoriteMovie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEDC29E029EB0CCB0091D963 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EEDC29E229EB0CCB0091D963 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -130,6 +136,16 @@
 			path = HighLightMovies;
 			sourceTree = "<group>";
 		};
+		EEC2A0DA2A008D6A00515542 /* MovieDetails */ = {
+			isa = PBXGroup;
+			children = (
+				EEC2A0DB2A008DB300515542 /* MovieDetailViewController.swift */,
+				EEC2A0DD2A008DC800515542 /* MovieDetailViewModel.swift */,
+				EEC2A0DF2A00911800515542 /* MovieDetailScreen.swift */,
+			);
+			path = MovieDetails;
+			sourceTree = "<group>";
+		};
 		EEDC29D429EB0CCB0091D963 = {
 			isa = PBXGroup;
 			children = (
@@ -153,6 +169,7 @@
 		EEDC29DF29EB0CCB0091D963 /* FavoriteMovie */ = {
 			isa = PBXGroup;
 			children = (
+				EEC2A0DA2A008D6A00515542 /* MovieDetails */,
 				EEDC2A2A29ECBB250091D963 /* TabBar */,
 				EEDC2A2329ECAE100091D963 /* Models */,
 				EEDC2A1E29EC7B2B0091D963 /* Networking */,
@@ -385,13 +402,16 @@
 				EEC2A0CC29F3248D00515542 /* Genre.swift in Sources */,
 				EEDC2A2229EC81980091D963 /* Auth.swift in Sources */,
 				EEDC29E129EB0CCB0091D963 /* AppDelegate.swift in Sources */,
+				EEC2A0E02A00911800515542 /* MovieDetailScreen.swift in Sources */,
 				EEC2A0D82A00406C00515542 /* HightLightMoviesViewModel.swift in Sources */,
 				EEDC2A2E29ECD0100091D963 /* HomeMovieCollectionViewCell.swift in Sources */,
 				EEDC29E329EB0CCB0091D963 /* SceneDelegate.swift in Sources */,
 				EEDC2A2029EC7B490091D963 /* Request.swift in Sources */,
 				EEC2A0CA29F30AF500515542 /* GenresCollectionViewCell.swift in Sources */,
 				EEC2A0D42A00222700515542 /* HightLightMovieCollectionViewCell.swift in Sources */,
+				EEC2A0DE2A008DC800515542 /* MovieDetailViewModel.swift in Sources */,
 				EEDC2A2529ECAE1A0091D963 /* Movie.swift in Sources */,
+				EEC2A0DC2A008DB300515542 /* MovieDetailViewController.swift in Sources */,
 				EEDC2A1429EB138C0091D963 /* LoginScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

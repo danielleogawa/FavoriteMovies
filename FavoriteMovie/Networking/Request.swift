@@ -16,7 +16,7 @@ struct Request {
     //TODO: get the user device laguage
     //TODO: get the current date
     
-    static let apiKey = "?api_key=a929d511c730708e667fd7fe46098969"
+    static let apiKey = ""
     static let language = "&language=en-US"
     static let baseURL = "https://api.themoviedb.org/3"
     
