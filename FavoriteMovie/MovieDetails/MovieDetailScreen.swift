@@ -22,7 +22,7 @@ final class MovieDetailScreen: UIView {
         return element
     }()
     
-    lazy var contentView: UIView = {
+    lazy var scrollContentView: UIView = {
         let element = UIView()
         element.translatesAutoresizingMaskIntoConstraints = false
         return element
@@ -50,12 +50,31 @@ final class MovieDetailScreen: UIView {
         return element
     }()
     
+    lazy var contentView: UIView = {
+        let element = UIView()
+//        element.backgroundColor = .red
+        element.translatesAutoresizingMaskIntoConstraints = false
+        return element
+    }()
+    
+    lazy var contentViewGradientBackground: CAGradientLayer = {
+        let element = CAGradientLayer()
+        element.type = .axial
+        element.colors = [
+            UIColor.clear.cgColor,
+            Colors.darkGray.cgColor
+        ]
+        element.locations = [0, 0.07]
+        return element
+    }()
+    
     init(delegate: MovieDetailViewModelProtocol?) {
         super.init(frame: .zero)
         self.screenDelegate = delegate
         setScrollView()
         setPosterImage()
         setImages()
+        setContentView()
     }
     
     required init?(coder: NSCoder) {
@@ -65,33 +84,45 @@ final class MovieDetailScreen: UIView {
     func setBackground( ){
         self.gradientBackground.frame = bounds
         layer.insertSublayer(gradientBackground, at: 0)
+        self.contentViewGradientBackground.frame = contentView.bounds
+        contentView.layer.addSublayer(contentViewGradientBackground)
     }
     
 
     private func setScrollView() {
         addSubview(scrollView)
-        scrollView.addSubview(contentView)
+        scrollView.addSubview(scrollContentView)
         
         NSLayoutConstraint.activate([
             scrollView.centerXAnchor.constraint(equalTo: centerXAnchor),
             scrollView.widthAnchor.constraint(equalTo: widthAnchor),
             scrollView.topAnchor.constraint(equalTo: topAnchor),
             scrollView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            contentView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
-            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
-            contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
-            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-            contentView.heightAnchor.constraint(equalToConstant: 1700)
+            scrollContentView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
+            scrollContentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+            scrollContentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            scrollContentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            scrollContentView.heightAnchor.constraint(equalToConstant: 1700)
         ])
     }
     
     private func setPosterImage(){
-        contentView.addSubview(posterImage)
+        scrollContentView.addSubview(posterImage)
         NSLayoutConstraint.activate([
-            posterImage.topAnchor.constraint(equalTo: contentView.topAnchor),
-            posterImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            posterImage.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            posterImage.topAnchor.constraint(equalTo: scrollContentView.topAnchor),
+            posterImage.leadingAnchor.constraint(equalTo: scrollContentView.leadingAnchor),
+            posterImage.trailingAnchor.constraint(equalTo: scrollContentView.trailingAnchor),
             posterImage.heightAnchor.constraint(equalToConstant: 600)
+        ])
+    }
+    
+    private func setContentView() {
+        scrollContentView.addSubview(contentView)
+        NSLayoutConstraint.activate([
+            contentView.topAnchor.constraint(equalTo: posterImage.bottomAnchor, constant: -100),
+            contentView.bottomAnchor.constraint(equalTo: scrollContentView.bottomAnchor),
+            contentView.trailingAnchor.constraint(equalTo: scrollContentView.trailingAnchor),
+            contentView.leadingAnchor.constraint(equalTo: scrollContentView.leadingAnchor)
         ])
     }
     
