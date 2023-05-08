@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class MovieDetailScreen: UIView, MovieDetailScreenDelegate {
+final class MovieDetailScreen: UIView {
     
     private var screenDelegate: MovieDetailViewModelProtocol?
 
@@ -136,6 +136,7 @@ final class MovieDetailScreen: UIView, MovieDetailScreenDelegate {
     
     private func setPosterImage(){
         scrollContentView.addSubview(posterImage)
+        
         NSLayoutConstraint.activate([
             posterImage.topAnchor.constraint(equalTo: scrollContentView.topAnchor),
             posterImage.leadingAnchor.constraint(equalTo: scrollContentView.leadingAnchor),
@@ -179,7 +180,7 @@ final class MovieDetailScreen: UIView, MovieDetailScreenDelegate {
         }
     }
     
-    private func setGenres(genres: [String]) {
+    private func setGenresStack(genres: [String]) {
         DispatchQueue.main.async { [self] in
             let stack = UIStackView()
             stack.translatesAutoresizingMaskIntoConstraints = false
@@ -215,27 +216,34 @@ final class MovieDetailScreen: UIView, MovieDetailScreenDelegate {
         return view
     }
     
+    func setNavigationController(viewController: UIViewController) {
+        viewController.navigationItem.title = screenDelegate?.getMovieTitle()
+        viewController.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: favoriteButton)
+    }
+}
+
+extension MovieDetailScreen: MovieDetailScreenDelegate {
+    func updateDetail() {
+        if let genres = screenDelegate?.getGenres() {
+          setGenresStack(genres: genres)
+        }
+        setStackContents()
+    }
+}
+
+//MARK: - Updates elements in the screen
+extension MovieDetailScreen {
     func setImages() {
         screenDelegate?.getPosterImage(completion: { image in
             self.posterImage.image = image
         })
     }
-    
-    func setNavigationController(viewController: UIViewController) {
-        viewController.navigationItem.title = screenDelegate?.getMovieTitle()
-        viewController.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: favoriteButton)
-    }
-    
+}
+
+//MARK: - Button functions
+extension MovieDetailScreen {
     @objc func favoriteButtonTapped() {
         print("favoritou")
     }
-    
-    func updateDetail() {
-        if let genres = screenDelegate?.getGenres() {
-          setGenres(genres: genres)
-        }
-        setStackContents()
-    }
-    
     
 }
