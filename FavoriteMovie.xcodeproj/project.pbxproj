@@ -16,6 +16,7 @@
 		EEC2A0DE2A008DC800515542 /* MovieDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC2A0DD2A008DC800515542 /* MovieDetailViewModel.swift */; };
 		EEC2A0E02A00911800515542 /* MovieDetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC2A0DF2A00911800515542 /* MovieDetailScreen.swift */; };
 		EEC2A0E22A08008900515542 /* CompletedMovie.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC2A0E12A08008900515542 /* CompletedMovie.swift */; };
+		EEC2A0E42A080E0100515542 /* MovieDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC2A0E32A080E0100515542 /* MovieDetail.swift */; };
 		EEDC29E129EB0CCB0091D963 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDC29E029EB0CCB0091D963 /* AppDelegate.swift */; };
 		EEDC29E329EB0CCB0091D963 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDC29E229EB0CCB0091D963 /* SceneDelegate.swift */; };
 		EEDC29E529EB0CCB0091D963 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDC29E429EB0CCB0091D963 /* HomeViewController.swift */; };
@@ -66,6 +67,7 @@
 		EEC2A0DD2A008DC800515542 /* MovieDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewModel.swift; sourceTree = "<group>"; };
 		EEC2A0DF2A00911800515542 /* MovieDetailScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailScreen.swift; sourceTree = "<group>"; };
 		EEC2A0E12A08008900515542 /* CompletedMovie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedMovie.swift; sourceTree = "<group>"; };
+		EEC2A0E32A080E0100515542 /* MovieDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetail.swift; sourceTree = "<group>"; };
 		EEDC29DD29EB0CCB0091D963 /* FavoriteMovie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FavoriteMovie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEDC29E029EB0CCB0091D963 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EEDC29E229EB0CCB0091D963 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -250,6 +252,7 @@
 				EEC2A0E12A08008900515542 /* CompletedMovie.swift */,
 				EEDC2A2629ECAFE80091D963 /* List.swift */,
 				EEC2A0CB29F3248D00515542 /* Genre.swift */,
+				EEC2A0E32A080E0100515542 /* MovieDetail.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -413,6 +416,7 @@
 				EEDC2A2029EC7B490091D963 /* Request.swift in Sources */,
 				EEC2A0CA29F30AF500515542 /* GenresCollectionViewCell.swift in Sources */,
 				EEC2A0D42A00222700515542 /* HightLightMovieCollectionViewCell.swift in Sources */,
+				EEC2A0E42A080E0100515542 /* MovieDetail.swift in Sources */,
 				EEC2A0DE2A008DC800515542 /* MovieDetailViewModel.swift in Sources */,
 				EEDC2A2529ECAE1A0091D963 /* SimpleMovie.swift in Sources */,
 				EEC2A0DC2A008DB300515542 /* MovieDetailViewController.swift in Sources */,

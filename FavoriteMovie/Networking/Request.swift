@@ -20,12 +20,15 @@ struct Request {
     //https://api.themoviedb.org/3/movie/502356/credits?api_key=a929d511c730708e667fd7fe46098969&language=en-US - cast
     //https://api.themoviedb.org/3/movie/758323/watch/providers?api_key=a929d511c730708e667fd7fe46098969 - onde assistir
     //https://api.themoviedb.org/3/trending/movie/day?api_key=a929d511c730708e667fd7fe46098969 - movie trendings
+    //https://api.themoviedb.org/3/movie/758323?api_key=a929d511c730708e667fd7fe46098969&language=en-US - mais info dos filmes
+    
     
     static let apiKey = "?api_key=a929d511c730708e667fd7fe46098969"
     static let language = "&language=en-US"
     static let baseURL = "https://api.themoviedb.org/3"
     
     enum Path: String {
+        case movie = "/movie/"
         case discover = "/discover/movie"
         case genre = "/genre/movie/list"
         case popularMovies = "/movie/popular"
@@ -41,8 +44,13 @@ struct Request {
         case mostPopularWithKids = "&certification_country=US&certification.lte=G&sort_by=popularity.desc"
     }
     
-    static func getUrl(with path: Path, urlPath: UrlPath? = nil) -> URL? {
-        let midlePath = path.rawValue
+    static func getUrl(with path: Path, movieID: Double? = nil, urlPath: UrlPath? = nil) -> URL? {
+        var midlePath = path.rawValue
+        
+        if let movieID = movieID, path == .movie {
+            midlePath += "\(movieID)"
+        }
+        
         var urlString = baseURL + midlePath + apiKey + language
         if let path = urlPath?.rawValue {
             urlString = urlString + path

@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class MovieDetailScreen: UIView {
+final class MovieDetailScreen: UIView, MovieDetailScreenDelegate {
     
     private var screenDelegate: MovieDetailViewModelProtocol?
 
@@ -73,12 +73,21 @@ final class MovieDetailScreen: UIView {
         return element
     }()
     
+    lazy var contentViewStack: UIStackView = {
+        let element = UIStackView()
+        element.translatesAutoresizingMaskIntoConstraints = false
+        element.spacing = 8
+        element.alignment = .leading
+        element.axis = .vertical
+        return element
+    }()
+    
     lazy var overviewLabel: UILabel = {
         let element = UILabel()
         element.translatesAutoresizingMaskIntoConstraints = false
+        element.font = .systemFont(ofSize: 14)
         element.numberOfLines = 0 
         element.text = screenDelegate?.getOverview()
-        element.font.withSize(12)
         element.textColor = .white.withAlphaComponent(0.8)
         return element
     }()
@@ -86,12 +95,14 @@ final class MovieDetailScreen: UIView {
     init(delegate: MovieDetailViewModelProtocol?) {
         super.init(frame: .zero)
         self.screenDelegate = delegate
+        self.screenDelegate?.setDelegate(delegate: self)
         setScrollView()
         setPosterImage()
         setImages()
         setContentView()
         setScrollContentView()
-        setOverviewLabel()
+        setContentViewStack()
+        setStackContents()
     }
     
     required init?(coder: NSCoder) {
@@ -153,13 +164,55 @@ final class MovieDetailScreen: UIView {
         ])
     }
     
-    private func setOverviewLabel() {
-        contentView.addSubview(overviewLabel)
+    private func setContentViewStack() {
+        contentView.addSubview(contentViewStack)
         NSLayoutConstraint.activate([
-            overviewLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 100),
-            overviewLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
-            overviewLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24)
+            contentViewStack.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 100),
+            contentViewStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
+            contentViewStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24)
         ])
+    }
+    
+    private func setStackContents() {
+        DispatchQueue.main.async {
+            self.contentViewStack.addArrangedSubview(self.overviewLabel)
+        }
+    }
+    
+    private func setGenres(genres: [String]) {
+        DispatchQueue.main.async { [self] in
+            let stack = UIStackView()
+            stack.translatesAutoresizingMaskIntoConstraints = false
+            stack.axis = .horizontal
+            stack.distribution = .fill
+            stack.spacing = 8
+            genres.forEach { stack.addArrangedSubview(setGenre(text: $0))}
+            contentViewStack.addArrangedSubview(stack)
+        }
+    }
+    
+    private func setGenre(text: String) -> UIView {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = Colors.darkMagenta
+        view.clipsToBounds = true
+        view.layer.cornerRadius = 5
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = text
+        label.numberOfLines = 0
+        label.textColor = .white
+        label.font = .systemFont(ofSize: 12)
+        view.addSubview(label)
+        
+        NSLayoutConstraint.activate([
+            view.centerXAnchor.constraint(equalTo: label.centerXAnchor),
+            view.centerYAnchor.constraint(equalTo: label.centerYAnchor),
+            view.heightAnchor.constraint(equalToConstant: 30),
+            view.leadingAnchor.constraint(equalTo: label.leadingAnchor, constant: -8),
+            view.trailingAnchor.constraint(equalTo: label.trailingAnchor, constant: 8)
+        ])
+        return view
     }
     
     func setImages() {
@@ -176,5 +229,13 @@ final class MovieDetailScreen: UIView {
     @objc func favoriteButtonTapped() {
         print("favoritou")
     }
+    
+    func updateDetail() {
+        if let genres = screenDelegate?.getGenres() {
+          setGenres(genres: genres)
+        }
+        setStackContents()
+    }
+    
     
 }
