@@ -76,7 +76,7 @@ final class MovieDetailScreen: UIView {
     lazy var contentViewStack: UIStackView = {
         let element = UIStackView()
         element.translatesAutoresizingMaskIntoConstraints = false
-        element.spacing = 8
+        element.spacing = 16
         element.alignment = .leading
         element.axis = .vertical
         return element
@@ -92,6 +92,10 @@ final class MovieDetailScreen: UIView {
         return element
     }()
     
+    let castCollectionView = GenericCollectionView(viewModel: .init(collectionViewTitle: "Meet the cast", items: []), collectionViewHeight: 100)
+    
+    let similarMoviesCollectionView = GenericCollectionView(viewModel: .init(collectionViewTitle: "Watch similar movies", items: []), collectionViewHeight: 170, width: 120)
+    
     init(delegate: MovieDetailViewModelProtocol?) {
         super.init(frame: .zero)
         self.screenDelegate = delegate
@@ -102,7 +106,7 @@ final class MovieDetailScreen: UIView {
         setContentView()
         setScrollContentView()
         setContentViewStack()
-        setStackContents()
+        setCastCollectionView()
     }
     
     required init?(coder: NSCoder) {
@@ -174,10 +178,33 @@ final class MovieDetailScreen: UIView {
         ])
     }
     
+    //MARK: - function that organize main stack view
     private func setStackContents() {
         DispatchQueue.main.async {
             self.contentViewStack.addArrangedSubview(self.overviewLabel)
+            self.setCastCollectionView()
+            self.setSimilarMoviesCollectionView()
         }
+    }
+    
+    private func setCastCollectionView() {
+        contentViewStack.addArrangedSubview(castCollectionView)
+        castCollectionView.layoutSubviews()
+        NSLayoutConstraint.activate([
+            castCollectionView.heightAnchor.constraint(equalToConstant: 180),
+            castCollectionView.leadingAnchor.constraint(equalTo: contentViewStack.leadingAnchor),
+            castCollectionView.trailingAnchor.constraint(equalTo: contentViewStack.trailingAnchor)
+        ])
+    }
+    
+    private func setSimilarMoviesCollectionView() {
+        contentViewStack.addArrangedSubview(similarMoviesCollectionView)
+        similarMoviesCollectionView.layoutSubviews()
+        NSLayoutConstraint.activate([
+            similarMoviesCollectionView.heightAnchor.constraint(equalToConstant: 250),
+            similarMoviesCollectionView.leadingAnchor.constraint(equalTo: contentViewStack.leadingAnchor),
+            similarMoviesCollectionView.trailingAnchor.constraint(equalTo: contentViewStack.trailingAnchor)
+        ])
     }
     
     private func setGenresStack(genres: [String]) {
@@ -192,6 +219,16 @@ final class MovieDetailScreen: UIView {
         }
     }
     
+//    private func setSectionTitle(text: String) -> UILabel {
+//        let label = UILabel()
+//        label.translatesAutoresizingMaskIntoConstraints = false
+//        label.text = text
+//        label.numberOfLines = 0
+//        label.textColor = .white
+//        label.font = .boldSystemFont(ofSize: 14)
+//        return label
+//    }
+//
     private func setGenre(text: String) -> UIView {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -223,11 +260,19 @@ final class MovieDetailScreen: UIView {
 }
 
 extension MovieDetailScreen: MovieDetailScreenDelegate {
+    func updateCasts(with persons: [Item]) {
+        castCollectionView.updateViewModel(with: persons)
+    }
+    
     func updateDetail() {
         if let genres = screenDelegate?.getGenres() {
           setGenresStack(genres: genres)
         }
         setStackContents()
+    }
+    
+    func updateSimilarMovies(movies: [Item]) {
+        similarMoviesCollectionView.updateViewModel(with: movies)
     }
 }
 

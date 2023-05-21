@@ -16,14 +16,11 @@ struct Request {
     //TODO: get the user device laguage
     //TODO: get the current date
     
-    //https://api.themoviedb.org/3/movie/758323/similar?api_key=a929d511c730708e667fd7fe46098969&language=en-US&page=1 - similar movies
-    //https://api.themoviedb.org/3/movie/502356/credits?api_key=a929d511c730708e667fd7fe46098969&language=en-US - cast
-    //https://api.themoviedb.org/3/movie/758323/watch/providers?api_key=a929d511c730708e667fd7fe46098969 - onde assistir
     //https://api.themoviedb.org/3/trending/movie/day?api_key=a929d511c730708e667fd7fe46098969 - movie trendings
     //https://api.themoviedb.org/3/movie/758323?api_key=a929d511c730708e667fd7fe46098969&language=en-US - mais info dos filmes
     
     
-    static let apiKey = "?api_key=a929d511c730708e667fd7fe46098969"
+    static let apiKey = ""
     static let language = "&language=en-US"
     static let baseURL = "https://api.themoviedb.org/3"
     
@@ -37,6 +34,12 @@ struct Request {
         case nowPlayingMovies = "/movie/now_playing"
     }
     
+    enum MoviePath: String {
+        case similar = "/similar"
+        case credits = "/credits"
+        case providers = "/watch/providers"
+    }
+    
     enum UrlPath: String {
         case mostPopularMovies = "&sort_by=popularity.desc"
         case onTheatres = "&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&primary_release_date.gte=2023-01-01&primary_release_date.lte=2023-04-16&with_watch_monetization_types=flatrate"
@@ -44,7 +47,21 @@ struct Request {
         case mostPopularWithKids = "&certification_country=US&certification.lte=G&sort_by=popularity.desc"
     }
     
-    static func getUrl(with path: Path, movieID: Double? = nil, urlPath: UrlPath? = nil) -> URL? {
+    static func getUrlForMovieDetails(with movieID: Double?,
+                                      moviePath: MoviePath?) -> URL? {
+        var midlePath = Path.movie.rawValue
+        
+        if let movieID, let moviePath = moviePath?.rawValue {
+            midlePath += "\(movieID)\(moviePath)"
+        }
+        
+        let urlString = baseURL + midlePath + apiKey + language
+        return URL(string: urlString)
+    }
+    
+    static func getUrl(with path: Path,
+                       movieID: Double? = nil,
+                       urlPath: UrlPath? = nil) -> URL? {
         var midlePath = path.rawValue
         
         if let movieID = movieID, path == .movie {
@@ -64,7 +81,8 @@ struct Request {
         return URL(string: urlString)
     }
     
-    static func downloadImage(from url: URL, completion: @escaping (UIImage?, Error?) -> Void) {
+    static func downloadImage(from url: URL,
+                              completion: @escaping (UIImage?, Error?) -> Void) {
 
         let requestURL = URLRequest(url: url)
         

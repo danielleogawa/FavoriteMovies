@@ -28,7 +28,7 @@ final class HomeViewViewModel {
         }
     }
     
-    init(delegate: HomeViewViewModelDelegate) {
+    init(delegate: HomeViewViewModelDelegate?) {
         self.delegate = delegate
         getMovies()
         getGenres()
