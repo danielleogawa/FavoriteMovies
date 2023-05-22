@@ -28,7 +28,7 @@ struct GenericCollectionViewViewModel {
             return
         }
         Request.downloadImage(from: url) { downloadedImage, _ in
-            completion(GenericCollectionViewCellViewModel(image: downloadedImage, name: item.name))
+            completion(GenericCollectionViewCellViewModel(image: downloadedImage, name: item.name, average: item.popularity))
         }
     }
 }

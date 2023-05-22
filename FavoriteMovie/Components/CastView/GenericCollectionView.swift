@@ -12,6 +12,7 @@ class GenericCollectionView: UIView {
     var viewModel: GenericCollectionViewViewModel?
     var imageHeight: Int
     var width: Int
+    var hasBottomInfo: Bool
     
     lazy var collectionView: UICollectionView = {
         let element = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout.init())
@@ -40,10 +41,11 @@ class GenericCollectionView: UIView {
     }()
     
 
-    init(viewModel: GenericCollectionViewViewModel?, collectionViewHeight: Int, width: Int = 100) {
+    init(viewModel: GenericCollectionViewViewModel?, collectionViewHeight: Int, width: Int = 100, hasBottomInfo: Bool) {
         self.viewModel = viewModel
         self.width = width
         self.imageHeight = collectionViewHeight
+        self.hasBottomInfo = hasBottomInfo
         super.init(frame: .zero)
         backgroundColor = Colors.darkMagenta
         self.clipsToBounds = true
@@ -85,14 +87,17 @@ class GenericCollectionView: UIView {
 
 extension GenericCollectionView: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        viewModel?.getNumberOfItems() ?? 0
+        collectionView.layoutIfNeeded()
+        return viewModel?.getNumberOfItems() ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GenericCollectionViewCell.identifier, for: indexPath) as? GenericCollectionViewCell {
             viewModel?.getPerson(row: indexPath.row, completion: { viewModel in
-                cell.updateViewModel(viewModel, imageHeight: self.imageHeight)
+                cell.updateViewModel(viewModel, imageHeight: self.imageHeight, hasBottomInfo: self.hasBottomInfo)
+                cell.layoutIfNeeded()
             })
+            collectionView.layoutIfNeeded()
             return cell
         }
         return UICollectionViewCell()

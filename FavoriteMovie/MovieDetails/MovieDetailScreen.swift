@@ -92,9 +92,15 @@ final class MovieDetailScreen: UIView {
         return element
     }()
     
-    let castCollectionView = GenericCollectionView(viewModel: .init(collectionViewTitle: "Meet the cast", items: []), collectionViewHeight: 100)
+    let castCollectionView = GenericCollectionView(viewModel: .init(
+        collectionViewTitle: "Meet the cast",
+        items: []),collectionViewHeight: 100, hasBottomInfo: false
+    )
     
-    let similarMoviesCollectionView = GenericCollectionView(viewModel: .init(collectionViewTitle: "Watch similar movies", items: []), collectionViewHeight: 170, width: 120)
+    let similarMoviesCollectionView = GenericCollectionView(viewModel: .init(
+        collectionViewTitle: "Watch similar movies",
+        items: []), collectionViewHeight: 170, width: 120, hasBottomInfo: true
+    )
     
     init(delegate: MovieDetailViewModelProtocol?) {
         super.init(frame: .zero)
@@ -113,7 +119,7 @@ final class MovieDetailScreen: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setBackground( ){
+    func setBackground(){
         self.gradientBackground.frame = bounds
         layer.insertSublayer(gradientBackground, at: 0)
         self.contentViewGradientBackground.frame = contentViewBackground.bounds
@@ -219,16 +225,6 @@ final class MovieDetailScreen: UIView {
         }
     }
     
-//    private func setSectionTitle(text: String) -> UILabel {
-//        let label = UILabel()
-//        label.translatesAutoresizingMaskIntoConstraints = false
-//        label.text = text
-//        label.numberOfLines = 0
-//        label.textColor = .white
-//        label.font = .boldSystemFont(ofSize: 14)
-//        return label
-//    }
-//
     private func setGenre(text: String) -> UIView {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false

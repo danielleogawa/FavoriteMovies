@@ -19,7 +19,6 @@ protocol MovieDetailScreenDelegate {
     func updateDetail()
     func updateSimilarMovies(movies: [Item])
     func updateCasts(with item: [Item])
-//    func updateCrew(with persons: [Person])
 }
 
 final class MovieDetailViewModel: MovieDetailViewModelProtocol {
@@ -50,12 +49,6 @@ final class MovieDetailViewModel: MovieDetailViewModelProtocol {
         }
     }
     
-//    var crew: [Crew]? {
-//        didSet {
-//            delegate?.updateCrew(with: getCrewPersons())
-//        }
-//    }
-    
     init(movie: CompletedMovie) {
         self.movie = movie
         self.requestMovieDetail()
@@ -72,13 +65,9 @@ final class MovieDetailViewModel: MovieDetailViewModelProtocol {
     
     func getSimilarMoviesItems() -> [Item] {
         guard let similarMovies else { return [] }
-        return similarMovies.map { .init(imagePath: $0.posterPath, name: $0.title, id: $0.id, popularity: $0.popularity)}
+        return similarMovies.map { .init(imagePath: $0.posterPath, name: $0.title, id: $0.id, popularity: $0.voteAverage)}
     }
     
-//    func getCrewPersons() -> [Person] {
-//        guard let crew else { return [] }
-//        return crew.map { .init(profilePath: $0.profilePath, name: $0.name)}
-//    }
     
     private func requestMovieDetail() {
         let url = Request.getUrl(with: .movie, movieID: movie.simpleMovie.id)
@@ -111,7 +100,6 @@ final class MovieDetailViewModel: MovieDetailViewModelProtocol {
             switch result {
             case .success(let data):
                 self.cast = data.cast
-//                self.crew = data.crew
             case .failure(_):
                 break
             }
