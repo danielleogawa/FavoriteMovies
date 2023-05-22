@@ -20,7 +20,7 @@ struct Request {
     //https://api.themoviedb.org/3/movie/758323?api_key=a929d511c730708e667fd7fe46098969&language=en-US - mais info dos filmes
     
     
-    static let apiKey = ""
+    static let apiKey = "?api_key=a929d511c730708e667fd7fe46098969"
     static let language = "&language=en-US"
     static let baseURL = "https://api.themoviedb.org/3"
     

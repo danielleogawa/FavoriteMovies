@@ -139,8 +139,7 @@ final class MovieDetailScreen: UIView {
             scrollContentView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
             scrollContentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
             scrollContentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
-            scrollContentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-            scrollContentView.heightAnchor.constraint(equalToConstant: 1700)
+            scrollContentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor)
         ])
     }
     
@@ -180,7 +179,8 @@ final class MovieDetailScreen: UIView {
         NSLayoutConstraint.activate([
             contentViewStack.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 100),
             contentViewStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
-            contentViewStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24)
+            contentViewStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24),
+            scrollContentView.bottomAnchor.constraint(equalTo: contentViewStack.bottomAnchor, constant: 24)
         ])
     }
     
