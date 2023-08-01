@@ -20,7 +20,7 @@ class GenericCollectionView: UIView {
         element.showsHorizontalScrollIndicator = false
         element.backgroundColor = .clear
         element.delaysContentTouches = false
-        element.isPagingEnabled = true
+        element.isPagingEnabled = false
         element.contentInsetAdjustmentBehavior = .never
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = .init(width: width, height: imageHeight + 30)
@@ -93,10 +93,8 @@ extension GenericCollectionView: UICollectionViewDelegate, UICollectionViewDataS
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GenericCollectionViewCell.identifier, for: indexPath) as? GenericCollectionViewCell {
-            viewModel?.getPerson(row: indexPath.row, completion: { viewModel in
-                cell.updateViewModel(viewModel, imageHeight: self.imageHeight, hasBottomInfo: self.hasBottomInfo)
-                cell.layoutIfNeeded()
-            })
+            cell.updateViewModel(viewModel?.getPerson(row: indexPath.row), imageHeight: self.imageHeight, hasBottomInfo: self.hasBottomInfo)
+            cell.layoutIfNeeded()
             collectionView.layoutIfNeeded()
             return cell
         }

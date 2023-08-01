@@ -37,7 +37,7 @@ final class HomeViewViewModel {
     private func getMovies() {
         let url = Request.getUrl(with: .discover, urlPath: .onTheatres)
         
-        Request.request(url: url, expecting: List.self) { result in
+        Request().request(url: url, expecting: List.self) { result in
             switch result {
             case .success(let list):
                 if let movies = list.results {
@@ -52,7 +52,7 @@ final class HomeViewViewModel {
     private func getGenres() {
         let url = Request.getUrl(with: .genre)
         
-        Request.request(url: url, expecting: GenreList.self) { result in
+        Request().request(url: url, expecting: GenreList.self) { result in
             switch result {
             case .success(let genreList):
                 self.genres = genreList.genres ?? []
@@ -66,9 +66,9 @@ final class HomeViewViewModel {
         return genres[row]
     }
     
-    func getMovieDetailViewModel(row: Int) -> MovieDetailViewModel {
+    func getMovieDetailViewModel(row: Int) -> MovieDetailLoadingViewModel {
         let movie = mainMovies[row]
-        return MovieDetailViewModel(movie: .init(simpleMovie: movie))
+        return MovieDetailLoadingViewModel(movie: .init(simpleMovie: movie))
     }
     
 }

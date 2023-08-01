@@ -87,7 +87,7 @@ class GenericCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
     }
     
-    func updateViewModel(_ viewModel: GenericCollectionViewCellViewModel, imageHeight: Int, hasBottomInfo: Bool) {
+    func updateViewModel(_ viewModel: GenericCollectionViewCellViewModel?, imageHeight: Int, hasBottomInfo: Bool) {
         self.viewModel = viewModel
         self.hasBottomInfo = hasBottomInfo 
         setContentViewCell(height: imageHeight + 40)
@@ -99,6 +99,7 @@ class GenericCollectionViewCell: UICollectionViewCell {
         super.layoutIfNeeded()
         setBackground()
     }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

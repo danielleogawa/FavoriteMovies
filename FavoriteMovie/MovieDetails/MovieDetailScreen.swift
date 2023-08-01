@@ -37,6 +37,7 @@ final class MovieDetailScreen: UIView {
 
     lazy var posterImage: UIImageView = {
         var element = UIImageView()
+        element.image = screenDelegate?.getPosterImage()
         element.translatesAutoresizingMaskIntoConstraints = false
         element.contentMode = .scaleAspectFill
         element.backgroundColor = .gray
@@ -102,17 +103,20 @@ final class MovieDetailScreen: UIView {
         items: []), collectionViewHeight: 170, width: 120, hasBottomInfo: true
     )
     
+    let genresView = GenresScrollView()
+    
     init(delegate: MovieDetailViewModelProtocol?) {
         super.init(frame: .zero)
         self.screenDelegate = delegate
-        self.screenDelegate?.setDelegate(delegate: self)
         setScrollView()
         setPosterImage()
-        setImages()
         setContentView()
         setScrollContentView()
         setContentViewStack()
+        setGenresStack()
+        contentViewStack.addArrangedSubview(self.overviewLabel)
         setCastCollectionView()
+        setSimilarMoviesCollectionView()
     }
     
     required init?(coder: NSCoder) {
@@ -184,16 +188,8 @@ final class MovieDetailScreen: UIView {
         ])
     }
     
-    //MARK: - function that organize main stack view
-    private func setStackContents() {
-        DispatchQueue.main.async {
-            self.contentViewStack.addArrangedSubview(self.overviewLabel)
-            self.setCastCollectionView()
-            self.setSimilarMoviesCollectionView()
-        }
-    }
-    
     private func setCastCollectionView() {
+        castCollectionView.updateViewModel(with: screenDelegate?.getCast() ?? [])
         contentViewStack.addArrangedSubview(castCollectionView)
         castCollectionView.layoutSubviews()
         NSLayoutConstraint.activate([
@@ -204,6 +200,7 @@ final class MovieDetailScreen: UIView {
     }
     
     private func setSimilarMoviesCollectionView() {
+        similarMoviesCollectionView.updateViewModel(with: screenDelegate?.getSimilarMovies() ?? [])
         contentViewStack.addArrangedSubview(similarMoviesCollectionView)
         similarMoviesCollectionView.layoutSubviews()
         NSLayoutConstraint.activate([
@@ -213,71 +210,20 @@ final class MovieDetailScreen: UIView {
         ])
     }
     
-    private func setGenresStack(genres: [String]) {
-        DispatchQueue.main.async { [self] in
-            let stack = UIStackView()
-            stack.translatesAutoresizingMaskIntoConstraints = false
-            stack.axis = .horizontal
-            stack.distribution = .fill
-            stack.spacing = 8
-            genres.forEach { stack.addArrangedSubview(setGenre(text: $0))}
-            contentViewStack.addArrangedSubview(stack)
-        }
-    }
-    
-    private func setGenre(text: String) -> UIView {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = Colors.darkMagenta
-        view.clipsToBounds = true
-        view.layer.cornerRadius = 5
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = text
-        label.numberOfLines = 0
-        label.textColor = .white
-        label.font = .systemFont(ofSize: 12)
-        view.addSubview(label)
-        
+    private func setGenresStack() {
+        genresView.updateList(screenDelegate?.getGenres() ?? [])
+        contentViewStack.addArrangedSubview(genresView)
+        genresView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            view.centerXAnchor.constraint(equalTo: label.centerXAnchor),
-            view.centerYAnchor.constraint(equalTo: label.centerYAnchor),
-            view.heightAnchor.constraint(equalToConstant: 30),
-            view.leadingAnchor.constraint(equalTo: label.leadingAnchor, constant: -8),
-            view.trailingAnchor.constraint(equalTo: label.trailingAnchor, constant: 8)
+            genresView.heightAnchor.constraint(equalToConstant: 30),
+            genresView.leadingAnchor.constraint(equalTo: contentViewStack.leadingAnchor),
+            genresView.trailingAnchor.constraint(equalTo: contentViewStack.trailingAnchor),
         ])
-        return view
     }
     
     func setNavigationController(viewController: UIViewController) {
         viewController.navigationItem.title = screenDelegate?.getMovieTitle()
         viewController.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: favoriteButton)
-    }
-}
-
-extension MovieDetailScreen: MovieDetailScreenDelegate {
-    func updateCasts(with persons: [Item]) {
-        castCollectionView.updateViewModel(with: persons)
-    }
-    
-    func updateDetail() {
-        if let genres = screenDelegate?.getGenres() {
-          setGenresStack(genres: genres)
-        }
-        setStackContents()
-    }
-    
-    func updateSimilarMovies(movies: [Item]) {
-        similarMoviesCollectionView.updateViewModel(with: movies)
-    }
-}
-
-//MARK: - Updates elements in the screen
-extension MovieDetailScreen {
-    func setImages() {
-        screenDelegate?.getPosterImage(completion: { image in
-            self.posterImage.image = image
-        })
     }
 }
 

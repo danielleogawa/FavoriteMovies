@@ -39,7 +39,7 @@ enum CollectionViewCategories: String, CaseIterable {
     }
     
     func getCategories(completion: @escaping ([SimpleMovie]) -> Void){
-        Request.request(url: self.url, expecting: List.self) { result in
+        Request().request(url: self.url, expecting: List.self) { result in
             switch result {
             case .success(let list):
                 if let listMovies = list.results {

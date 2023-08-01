@@ -21,15 +21,9 @@ struct GenericCollectionViewViewModel {
         items?.count ?? 0
     }
     
-    func getPerson(row: Int, completion: @escaping (GenericCollectionViewCellViewModel) -> Void) {
-        guard let item = items?[row],
-                let profilePath = item.imagePath,
-                let url = Request.getImageURL(posterPath: profilePath) else {
-            return
-        }
-        Request.downloadImage(from: url) { downloadedImage, _ in
-            completion(GenericCollectionViewCellViewModel(image: downloadedImage, name: item.name, average: item.popularity))
-        }
+    func getPerson(row: Int) -> GenericCollectionViewCellViewModel? {
+        guard let item = items?[row] else { return nil }
+        return GenericCollectionViewCellViewModel(image: item.image, name: item.name, average: item.popularity)
     }
 }
 

@@ -66,7 +66,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeMovieCollectionViewCell.identifier,
                                                          for: indexPath) as? HomeMovieCollectionViewCell {
             let movie = viewModel?.mainMovies[indexPath.row]
-            Request.getImage(movie: movie, completion: { downloadedImage in
+            Request().getImage(movie: movie, completion: { downloadedImage in
                 cell.setCell(with: downloadedImage, movie: movie)
             })
             return cell
@@ -93,7 +93,8 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == screen?.onTheatresCollectionView {
             guard let viewModel else { return }
-            let viewController = MovieDetailViewController(viewModel: viewModel.getMovieDetailViewModel(row: indexPath.row))
+//            let viewController = MovieDetailViewController(viewModel: viewModel.getMovieDetailViewModel(row: indexPath.row))
+            let  viewController = LoadingViewController(viewModel: viewModel.getMovieDetailViewModel(row: indexPath.row))
             self.navigationController?.pushViewController(viewController, animated: true)
         } else if collectionView == screen?.genresCollectionView {
             let genre = viewModel?.getGenre(of: indexPath.row)

@@ -7,20 +7,23 @@
 
 import UIKit
 
+protocol RequestProtocol {
+    func request<T: Codable>(url: URL?, expecting: T.Type, completion: @escaping (Result<T, Error>) -> Void)
+    func downloadImage(from url: URL, completion: @escaping (UIImage?, Error?) -> Void)
+}
+
 enum CustomError: Error {
     case invalidURL
     case invalidData
 }
 
-struct Request {
+class Request: RequestProtocol {
     //TODO: get the user device laguage
     //TODO: get the current date
     
     //https://api.themoviedb.org/3/trending/movie/day?api_key=a929d511c730708e667fd7fe46098969 - movie trendings
-    //https://api.themoviedb.org/3/movie/758323?api_key=a929d511c730708e667fd7fe46098969&language=en-US - mais info dos filmes
     
-    
-    static let apiKey = "?api_key=a929d511c730708e667fd7fe46098969"
+    static let apiKey = ""
     static let language = "&language=en-US"
     static let baseURL = "https://api.themoviedb.org/3"
     
@@ -47,7 +50,7 @@ struct Request {
         case mostPopularWithKids = "&certification_country=US&certification.lte=G&sort_by=popularity.desc"
     }
     
-    static func getUrlForMovieDetails(with movieID: Double?,
+    class func getUrlForMovieDetails(with movieID: Double?,
                                       moviePath: MoviePath?) -> URL? {
         var midlePath = Path.movie.rawValue
         
@@ -59,7 +62,7 @@ struct Request {
         return URL(string: urlString)
     }
     
-    static func getUrl(with path: Path,
+    class func getUrl(with path: Path,
                        movieID: Double? = nil,
                        urlPath: UrlPath? = nil) -> URL? {
         var midlePath = path.rawValue
@@ -75,14 +78,15 @@ struct Request {
         return URL(string: urlString)
     }
     
-    static func getImageURL(posterPath: String) -> URL? {
+    class func getImageURL(posterPath: String) -> URL? {
         let imageURLBase = "https://image.tmdb.org/t/p/w500"
         let urlString = imageURLBase + posterPath
         return URL(string: urlString)
     }
     
-    static func downloadImage(from url: URL,
-                              completion: @escaping (UIImage?, Error?) -> Void) {
+    func downloadImage(from url: URL,
+                              completion: @escaping (UIImage?, Error?) -> Void
+    ) {
 
         let requestURL = URLRequest(url: url)
         
@@ -99,7 +103,7 @@ struct Request {
        
     }
     
-    static func request<T: Codable>(url: URL?,
+    func request<T: Codable>(url: URL?,
                                     expecting: T.Type,
                                     completion: @escaping (Result<T, Error>) -> Void) {
         guard let url else {
@@ -131,12 +135,12 @@ struct Request {
         task.resume()
     }
     
-    static func getImage(movie: SimpleMovie?, completion: @escaping (UIImage) -> Void) {
+    func getImage(movie: SimpleMovie?, completion: @escaping (UIImage) -> Void) {
         guard let posterPath = movie?.posterPath,
               let url = Request.getImageURL(posterPath: posterPath) else {
             return
         }
-        Request.downloadImage(from: url) { result, _  in
+        downloadImage(from: url) { result, _  in
             if let result {
                 completion(result)
             }

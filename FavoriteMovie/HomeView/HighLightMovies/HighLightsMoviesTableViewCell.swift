@@ -96,7 +96,7 @@ extension HighLightsMoviesTableViewCell: UICollectionViewDelegate, UICollectionV
             
             let movie = viewModel?.getMovie(row: indexPath.row)
             
-            Request.getImage(movie: movie) { image in
+            Request().getImage(movie: movie) { image in
                 cell.setCell(image: image)
             }
             return cell
